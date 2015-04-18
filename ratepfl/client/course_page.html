@@ -1,4 +1,4 @@
-<template name="coursePage">
+<template name="coursePage" xmlns="http://www.w3.org/1999/html">
 
 
     <div class="container">
@@ -36,15 +36,17 @@
             </div>
 
             <div id="modal-add-comment" class="modal">
-                <div class="modal-content">
-                    <h4>Comment on this course</h4>
-                    <textarea id="comment-textarea" class="materialize-textarea"></textarea>
-                    <label for="comment-textarea">Share what you think</label>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Add</a>
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-                </div>
+                <form class="new-comment">
+                    <div class="modal-content">
+                        <h4>Comment on this course</h4>
+                        <textarea id="comment-textarea" class="materialize-textarea" name="comment"></textarea>
+                        <label for="comment-textarea">Share what you think</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="waves-effect waves-green btn-flat">Comment</button>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    </div>
+                </form>
             </div>
 
         </div>
