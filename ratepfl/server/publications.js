@@ -3,6 +3,7 @@ Meteor.publish('courses', function(){
 });
 
 Meteor.publish('singleCourse', function(id){
+	console.log("ID of single course : "+id);
 	return Courses.find({_id: id});
 });
 

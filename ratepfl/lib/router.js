@@ -24,14 +24,16 @@ Router.route('/course/:_id', {
 	name:'coursePage',
 	template: 'coursePage',
 	waitOn: function(){
-		Meteor.subscribe("singlecourse", this.params.id);
-		Meteor.subscribe("comments", this.params.id);
+		Meteor.subscribe("singleCourse", this.params._id);
+		Meteor.subscribe("comments", this.params._id);
 	},
 	data: function(){
+console.log("done"+Courses);
 		return {
-		courses: Courses.findOne({}),
-		comments: Comments.find({_id:this.params.id})
-		}
+
+		course: Courses.findOne({}),
+		comments: Comments.find({})
+		};
 	}
 });
 
