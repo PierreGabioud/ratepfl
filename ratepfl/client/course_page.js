@@ -40,7 +40,7 @@ Template.coursePage.helpers({
 	zeroToTen: function(){
 		return [1,2,3,4,5,6,7,8,9,10];
 	},
-	
+
 	getNbHours: function(){
 		if(Session.get("nbHoursRating")){
 			return Session.get("nbHoursRating")*2 -2;
@@ -127,11 +127,11 @@ Template.coursePage.helpers({
 
 		}
 		else if(rating > 7 ){
-			return "Awesome!";	
+			return "Awesome!";
 		}
 		else if(rating > 6 ){
 			return "Pretty awesome!";
-			
+
 		}
 		else if(rating > 5){
 			return "Alright";
@@ -149,7 +149,7 @@ Template.coursePage.helpers({
 			var val = Ratings.findOne({});
 			if(val) rating = val.ratingHours;
 		}
-		
+
 		var h = (rating*2-2)+"h ";
 
 
@@ -190,13 +190,13 @@ Template.coursePage.helpers({
 			var val = Ratings.findOne({});
 			if(val) rating = val.ratingDifficulty;
 		}
-		
+
 		console.log("RATING = "+rating);
 
 		if(rating > 9){
 			return "HARDCORE";
 		}else if(rating > 8 ){
-			return "Very hard";	
+			return "Very hard";
 		}else if(rating > 7){
 			return "Hard";
 		}
@@ -230,13 +230,13 @@ Template.coursePage.helpers({
 			var val = Ratings.findOne({});
 			if(val) rating = val.ratingInterest;
 		}
-		
+
 		console.log("RATING = "+rating);
 
 		if(rating > 9){
 			return "∞ interesting";
 		}else if(rating > 8 ){
-			return "SUPER interesting";	
+			return "SUPER interesting";
 		}else if(rating > 7){
 			return "Very interesting";
 		}
@@ -270,13 +270,13 @@ Template.coursePage.helpers({
 			var val = Ratings.findOne({});
 			if(val) rating = val.ratingUsefulness;
 		}
-		
+
 		console.log("RATING = "+rating);
 
 		if(rating > 9){
 			return "∞ interesting";
 		}else if(rating > 8 ){
-			return "SUPER interesting";	
+			return "SUPER interesting";
 		}else if(rating > 7){
 			return "Very interesting";
 		}
@@ -362,7 +362,7 @@ Template.coursePage.events({
 	'click .usefulnessRating': function(e,t){
 		Meteor.call("changeRating", t.data.course._id, $(e.target).data("usefulnessrating"), "usefulness")
 	},
-	
+
 	'click .new-button': function(e,t){
 		Session.set("sortMode", "new");
 	},
@@ -399,3 +399,9 @@ Template.coursePage.events(
 		}
 
 });
+
+Template.coursePage.rendered = function () {
+  setTimeout(function() {
+  	$('.modal-trigger').leanModal();
+  }, 200);
+}
