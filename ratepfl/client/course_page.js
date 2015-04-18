@@ -160,38 +160,16 @@ Template.coursePage.helpers({
 
 		var h = (rating*2-2)+"h ";
 
+		var comments = [h+"Nice", h+"Chillax", h+"Relax", h+"Average", h+"Long", h+";(", h+";(", h+";(", h+"Too much", h+"Nolife"];
 
-		if(rating > 10){
-			return h+"BIG DATA?";
-		}
-		else if(rating > 9 ){
-			return h+"Oh God";
-		}
-		else if(rating > 8 ){
-			return h+"Wtf";
-		}
-		else if(rating > 7){
-			return h+"WOW";
-		}
-		else if(rating > 6){
-			return h+"Wow";
-		}
-
-		else if(rating > 5){
-			return h+"Wow";
-		}else if(rating > 3){
-			return h+"Maah";
-		}else if(rating >1){
-			return h+"Go Study!";
-		} else if(rating == 1){
-			return h+"Nice";
-		}
+			if(rating){
+				return comments[rating-1];
+			}
+			
 
 	},
 	getDifficultyComment: function(){
 		var rating=0;
-		console.log("SEETING = "+Session.get("difficultyRating"));
-
 		if(Session.get("difficultyRating")){
 			rating = Session.get("difficultyRating");
 		}else{
@@ -199,38 +177,13 @@ Template.coursePage.helpers({
 			if(val) rating = val.ratingDifficulty;
 		}
 
-		console.log("RATING = "+rating);
-
-		if(rating > 9){
-			return "HARDCORE";
-		}else if(rating > 8 ){
-			return "Very hard";
-		}else if(rating > 7){
-			return "Hard";
-		}
-		else if(rating > 6){
-			return "Pretty hard";
-		}
-
-		else if(rating > 5){
-			return "Kinda hard";
-		}else if(rating > 4){
-			return "Average";
-		}else if(rating >3){
-			return "Easy";
-		}
-		else if(rating >2){
-			return "Very easy";
-		}
-		else if(rating >1){
-			return "VERY easy";
-		}else if(rating ==1){
-			return "lol";
+		var comments = ["lol", "VERY easy", "Very easy", "Easy", "Average", "Kinda hard", "Pretty hard", "Hard", "Very hard", "HARDOCRE"];
+		if(rating){
+			comments[rating-1];
 		}
 	},
 	getInterestComment: function(){
 		var rating=0;
-		console.log("SEETING = "+Session.get("interestRating"));
 
 		if(Session.get("interestRating")){
 			rating = Session.get("interestRating");
@@ -238,35 +191,11 @@ Template.coursePage.helpers({
 			var val = Ratings.findOne({});
 			if(val) rating = val.ratingInterest;
 		}
-
-		console.log("RATING = "+rating);
-
-		if(rating > 9){
-			return "∞ interesting";
-		}else if(rating > 8 ){
-			return "SUPER interesting";
-		}else if(rating > 7){
-			return "Very interesting";
+		var comments = ["SHS boring", "Good night", "Very boring", "Boring", "Not so interesting", "Alright", "Interesting", "Very interesting", "SUPER interesting", "∞ interesting"];
+		if(rating){
+			return comments[rating-1];
 		}
-		else if(rating > 6){
-			return "Interesting";
-		}
-
-		else if(rating > 5){
-			return "Alright";
-		}else if(rating > 4){
-			return "Not so interesing";
-		}else if(rating >3){
-			return "Boring";
-		}
-		else if(rating >2){
-			return "Very boring";
-		}
-		else if(rating >1){
-			return "Good night";
-		}else if(rating == 1){
-			return "SHS boring";
-		}
+	
 	},
 	getUsefulnessComment: function(){
 		var rating=0;
@@ -279,34 +208,10 @@ Template.coursePage.helpers({
 			if(val) rating = val.ratingUsefulness;
 		}
 
-		console.log("RATING = "+rating);
-
-		if(rating > 9){
-			return "∞ interesting";
-		}else if(rating > 8 ){
-			return "SUPER interesting";
-		}else if(rating > 7){
-			return "Very interesting";
-		}
-		else if(rating > 6){
-			return "Interesting";
-		}
-
-		else if(rating > 5){
-			return "Alright";
-		}else if(rating > 4){
-			return "Not so interesing";
-		}else if(rating >3){
-			return "Boring";
-		}
-		else if(rating >2){
-			return "Very boring";
-		}
-		else if(rating >1){
-			return "Good night";
-		}else if(rating == 1) {
-			return "SHS boring";
-		}
+		var comments = ["Überuseless", "Useless", "Pretty useless", "sort of useless", "Neutral", "Kinda useleful", "Useful", "Very useful", "VERY useful", "Überuseful"];
+		if(rating){
+			return comments[rating-1];
+		}	
 	},
 
 
