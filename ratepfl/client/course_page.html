@@ -7,9 +7,9 @@
 
         {{#with course}}
         <br>
-        <h2 class="center">{{title}}</h2>
-        <h3 class="center">{{teacher}}</h3>
-        <h4 class="center">{{label}} - {{semesterName}}</h4>
+        <h2 class="center">{{title}} <label class="light grey-text" style="font-size: 0.75em;">{{teacher}}</label></h2>
+        <h3 class="center"></h3>
+        <h4 class="center light grey-text">{{label}} - {{semesterName}}</h4>
             <br/>
          <div class="center">
         <label>Comments</label> <b>{{commentsNb}}</b> - <label>Overall Rating</label> <b>{{overallrating}}</b>
@@ -54,7 +54,7 @@
         <br/><br/>
 
         <div class="row center">
-            <a href="#" class="best-button {{getUnderline 'best'}}">Best</a> <a href="#" class="new-button {{getUnderline 'new'}}">New</a>
+            <a href="#" class="best-button {{getUnderline 'best'}}">Best</a> | <a href="#" class="new-button {{getUnderline 'new'}}">New</a>
         </div>
 
         <div class="row">
