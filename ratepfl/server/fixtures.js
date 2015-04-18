@@ -18,7 +18,7 @@ if(Courses.find().count() <2){
 			credits: getRandomBetween(4,7),
 			teacher: "Michael Jordan",
 			overallrating: 8.6,
-			year:getRandomBetween(1,5)
+			year:getRandomBetween(1,4)
 
 		});
 
@@ -60,14 +60,19 @@ if(Sections.find().count() == 0){
 }
 
 
-if(Ratings.find().count() == 0){
-	Ratings.insert({
+if(Ratings.find().count() <= 2){
+	
+	for (var i = 0; i <=30; i++) {
+	
+			Ratings.insert({
 
-		userID: "sdkfjsdf",
-		ratedID: courseID,
-		value:getRandomBetween(2,10),
-		type: getRandomBetween(0,3)
+				userID: "sdkfjsdf",
+				ratedID: courseID,
+				ratingHours:getRandomBetween(2,10),
+				ratingTeacher: getRandomBetween(1,10)
 
-	});
+			});
+
+	};
 }
 

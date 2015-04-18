@@ -1,7 +1,8 @@
-<template name="coursePage">
+<template name="coursePage" xmlns="http://www.w3.org/1999/html">
 
 
     <div class="container">
+
 
         {{#with course}}
         <h2>{{title}}</h2>
@@ -10,6 +11,29 @@
             <br/>
         <label>Comments</label> <b>{{commentsNb}}</b> - <label>Overall Rating</label> <b>{{overallrating}}</b>
         {{/with}}
+
+
+        <div class="row">
+
+            <h4 class="center">Rate this course!</h4>
+            <br>
+            <h5>Number of hours/week : 
+                {{#each oneToTen}}
+                <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
+                {{/each}}
+            </h5>
+            <h5>Teacher : 
+                {{#each oneToTen}}
+                <i class="mdi-action-thumb-up teacherRating {{getTeacherRatingColor}}" data-teacherrating="{{this}}"></i>
+                {{/each}}
+            </h5>
+        </div>
+
+
+
+
+
+
 
         <br/><br/>
 
@@ -22,8 +46,8 @@
                         <p>{{content}}</p>
                     </div>
                     <div class="card-action right-align" style="padding: 10px;">
-                        <a href="#" class="green-text"><i class="mdi-content-add-circle"></i>{{upvotes}}</a>
-                        <a href='#' class="red-text"><i class="mdi-content-remove-circle"></i>{{downvotes}}</a>
+                        <a class="green-text text-lighten-3 upvote"><i class="mdi-content-add-circle"></i>{{upvotes}}</a>
+                        <a class="red-text text-lighten-3 downvote"><i class="mdi-content-remove-circle"></i>{{downvotes}}</a>
                     </div>
                 </div>
             </div>
@@ -36,15 +60,17 @@
             </div>
 
             <div id="modal-add-comment" class="modal">
-                <div class="modal-content">
-                    <h4>Comment on this course</h4>
-                    <textarea id="comment-textarea" class="materialize-textarea"></textarea>
-                    <label for="comment-textarea">Share what you think</label>
-                </div>
-                <div class="modal-footer">
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Add</a>
-                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
-                </div>
+                <form class="new-comment">
+                    <div class="modal-content">
+                        <h4>Comment on this course</h4>
+                        <textarea id="comment-textarea" class="materialize-textarea" name="comment"></textarea>
+                        <label for="comment-textarea">Share what you think</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="waves-effect waves-green btn-flat">Comment</button>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    </div>
+                </form>
             </div>
 
         </div>
