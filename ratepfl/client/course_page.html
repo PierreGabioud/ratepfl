@@ -21,18 +21,33 @@
 
             <h4 class="center">Rate this course!</h4>
             <br>
-            <h5 class="nbHoursHeader">Number of hours/week : 
+
+            <div class="nbHoursHeader rating-header row">
+
+                <div class="col s4">Number of hours/week : </div>
+                <div class="col s8">
                 {{#each zeroToTen}}
                 <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
                 {{/each}}
                 {{getNbHours}}h {{getHoursComment}}
-            </h5>
-            <h5 class="teacherHeader">Teacher : 
+                </div>
+            </div>
+
+            <div class="teacherHeader rating-header row">
+
+                <div class="col s4">Teacher : </div>
+                <div class="col s8">
                 {{#each oneToTen}}
                 <i class="mdi-action-thumb-up teacherRating {{getTeacherRatingColor}}" data-teacherrating="{{this}}"></i>
                 {{/each}}
                 {{getTeacherComment}}
-            </h5>
+            </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <h5 class="center">Statistics</h5>
+
         </div>
 
 

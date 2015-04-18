@@ -38,7 +38,7 @@ Template.coursePage.helpers({
 		return [1,2,3,4,5,6,7,8,9,10];
 	},
 	zeroToTen: function(){
-		return [1,2,3,4,5,6,7,8,9,10,11];
+		return [1,2,3,4,5,6,7,8,9,10];
 	},
 	getNbHoursColor: function(){
 
@@ -84,9 +84,18 @@ Template.coursePage.helpers({
 		if(rating == 10){
 			return "BEST TEACHER EVAH";
 		}else if(rating > 8 ){
+			return "Fantastic!";
+
+		}
+		else if(rating > 7 ){
+			return "Awesome!";	
+		}
+		else if(rating > 6 ){
 			return "Pretty awesome!";
-		}else if(rating > 5){
-			return "Allright";
+			
+		}
+		else if(rating > 5){
+			return "Alright";
 		}else if(rating > 3){
 			return "Maah";
 		}else{
@@ -103,7 +112,7 @@ Template.coursePage.helpers({
 		}
 		
 
-		if(rating > 11){
+		if(rating > 10){
 			return "BIG DATA?";
 		}else if(rating > 8 ){
 			return "Wtf";
