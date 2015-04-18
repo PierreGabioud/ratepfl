@@ -31,20 +31,20 @@ var courseID = Courses.findOne({})._id;
 
 //Comments.remove({});
 
-/*if(Comments.find().count() == 0){
+if(Comments.find().count() == 0){
 	for (var i = 0; i <=50; i++) {
 
 		Comments.insert({
 			courseID: courseID,
-			content: "Rien à branler de ce cours de merde",
+			content: "Rien à branler de ce cours de merde " + i,
 			upvotes: getRandomBetween(0,10),
 			downvotes: getRandomBetween(0,10),
-
+			timestamp: getRandomBetween(0,1000)
 		});
 
 
 	};
-}*/
+}
 
 if(Sections.find().count() == 0){
 	Sections.insert({
@@ -61,11 +61,11 @@ if(Sections.find().count() == 0){
 
 if(Meteor.users.findOne({_id: "CaiM7wLtSax3uMiA8"})){
 	console.log("creating pierre");
-	
+
 
 if( !Ratings.findOne({userID: "CaiM7wLtSax3uMiA8"}) ){
-	
-	
+
+
 			Ratings.insert({
 
 				userID: "CaiM7wLtSax3uMiA8",
@@ -75,7 +75,7 @@ if( !Ratings.findOne({userID: "CaiM7wLtSax3uMiA8"}) ){
 
 			});
 
-	
+
 }
 
 }
