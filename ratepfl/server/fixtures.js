@@ -14,7 +14,7 @@ if(Courses.find().count() == 0){
 			title: "Cours de test "+i,
 			label: "CS"+getRandomBetween(200,400),
 			semester: getRandomBetween(1,2),
-			credits: 7,
+			credits: getRandomBetween(4,7),
 			teacher: "Michael Jordan",
 			overallrating: 8.6
 

@@ -1,5 +1,5 @@
 Template.courseList.helpers({
-	foo: function () {
-		// ...
+	getCourses: function () {
+		return this.courses;
 	}
 });

@@ -44,7 +44,7 @@ Router.route('/courses', {
 	},
 	data: function(){
 		return {
-			courses: Courses.findOne({})
+			courses: Courses.find({})
 		};
 	}
 })
