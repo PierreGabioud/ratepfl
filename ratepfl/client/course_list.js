@@ -7,6 +7,7 @@ Template.courseList.helpers({
 Template.courseList.events({
 	'click .courseRow': function () {
 		console.log(this._id);
+		Session.set("courseID", this._id);
 		Router.go('/course/'+this._id);
 	},
 	'mouseover .courseRow': function(e){

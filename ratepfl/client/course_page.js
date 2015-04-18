@@ -27,13 +27,31 @@ Template.coursePage.helpers({
 	getNbHoursColor: function(){
 
 		if(!Session.get("nbHoursRating")){
-			return(this.ratingHours <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
+			var value = Ratings.findOne({});
+			if(value){
+					return ( Number(this) <= value.ratingHours) ? "red-text text-darken-3" : "black-text";
+			}
+
+		}else{
+			return (Number(this) <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
 		}
-		return (Number(this) <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
+	},
+	getNbHours: function(){
+		if(Session.get("nbHoursRating")){
+			return Session.get("nbHoursRating")*2;
+		}else{
+			return Ratings.findOne({}).ratingHours * 2;
+		}
 	},
 	getTeacherRatingColor: function(){
-		// console.log(Number(this)+" vs "+Session.get("teacherRating"));
-		return (Number(this) <= Session.get("teacherRating")) ? "green-text text-darken-3" : "black-text";
+			if(!Session.get("teacherRating")){
+					var value = Ratings.findOne({});
+					if(value){
+						return (Number(this) <= value.ratingTeacher ) ? "green-text text-darken-3" : "black-text";
+					}
+			}else{
+				return (Number(this) <= Session.get("teacherRating")) ? "green-text text-darken-3" : "black-text";
+			}
 	},
 	getTeacherComment: function(){
 		var rating = Session.get("teacherRating");
@@ -49,6 +67,23 @@ Template.coursePage.helpers({
 			return "STAHP";
 		}
 	},
+	getHoursComment: function(){
+		var rating = Session.get("nbHoursRating");
+		if(rating == 10){
+			return "BIG DATA?";
+		}else if(rating > 8 ){
+			return "Wtf";
+		}else if(rating > 5){
+			return "Wow";
+		}else if(rating > 3){
+			return "Maah";
+		}else if(rating >1){
+			return "Go Study!";
+		}else{
+			return "Nice";
+		}
+	}
+
 	lightenUpvote: function(){
 		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
 		return (vote.length > 0 && vote[0].type == 1)? "" : "text-lighten-4";
@@ -78,9 +113,14 @@ Template.coursePage.events({
 		console.log("Mouse leave");
 		Session.set("teacherRating", "");
 	},
-	'click .teacherRating': function(e){
-		console.log($(e.target).data("teacherrating"));
-		Meteor.call("changeRating");
+	'click .teacherRating': function(e, t){
+
+		//console.log($(e.target).data("teacherrating")+" and courseID = "+t.data.course._id);
+
+		Meteor.call("changeRatingTeaching", t.data.course._id, $(e.target).data("teacherrating"));
+	},
+	'click .nbhoursrating': function(e,t){
+		Meteor.call("changeRatingHours", t.data.course._id, $(e.target).data("nbhoursrating"))
 	}
 });
 
