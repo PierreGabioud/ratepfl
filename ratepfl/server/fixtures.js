@@ -12,3 +12,20 @@ if(Courses.find().count() == 0){
 
 	};
 }
+
+
+
+if(Comments.find().count() == 0){
+	for (var i = 0; i <=50; i++) {
+		
+		Comments.insert({
+			courseID: "AiNDK3y8HehQBrkTD",
+			content: "Rien à branler de ce cours de merde"
+
+
+		});
+
+
+	};
+}
+
