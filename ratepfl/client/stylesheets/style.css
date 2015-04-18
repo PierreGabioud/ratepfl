@@ -1,0 +1,17 @@
+.collection-item {
+	cursor: default!important;
+}
+
+.section.collection {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.sectionYear.collection-item {
+  padding-left: 40px;
+}
+
+.leftMenu {
+  float: left;
+}

@@ -1,37 +1,63 @@
 <template name="coursePage">
 
+
     <div class="container">
 
-
-
-
         {{#with course}}
-        <h2>
-            {{title}}</h2>
-        <h3>Will Smith</h3>
-        <label>CS404</label> - <label>Spring Semester</label>
-        <b>Comments</b><label>521</label> - <b>Overall Rating</b><label>4.5</label>
+        <h2>{{title}}</h2>
+        <h3>{{teacher}}</h3>
+        <h4>{{label}} - {{semesterName}}</h4>
+            <br/>
+        <label>Comments</label> <b>{{commentsNb}}</b> - <label>Overall Rating</label> <b>{{overallrating}}</b>
+        {{/with}}
+
+        <br/><br/>
 
         <div class="row">
-            
+            {{#each comments}}
             <div class="col s12 m6">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title">Card Title</span>
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+                <div class="card">
+                    <div class="card-content black-text">
+                        <span class=" black-text card-title">Comment</span>
+                        <p>{{content}}</p>
                     </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                        <a href='#'>This is a link</a>
+                    <div class="card-action right-align" style="padding: 10px;">
+                        <a href="#" class="green-text"><i class="mdi-content-add-circle"></i>{{upvotes}}</a>
+                        <a href='#' class="red-text"><i class="mdi-content-remove-circle"></i>{{downvotes}}</a>
                     </div>
                 </div>
             </div>
-            
+            {{/each}}
+
+            <div class="fixed-action-btn" style="bottom: 45px; right: 45px;">
+                <a class="modal-trigger btn-floating btn-large waves-effect waves-light red" href="#modal-add-comment">
+                    <i class="large mdi-content-add"></i>
+                </a>
+            </div>
+
+            <div id="modal-add-comment" class="modal">
+                <div class="modal-content">
+                    <h4>Comment on this course</h4>
+                    <textarea id="comment-textarea" class="materialize-textarea"></textarea>
+                    <label for="comment-textarea">Share what you think</label>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+            </div>
+
         </div>
 
-        {{/with}}
-
     </div>
+
+    <script>
+        $(document).ready(function(){
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
+
+
 
 </template>

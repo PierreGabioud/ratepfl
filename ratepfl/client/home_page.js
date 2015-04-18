@@ -4,6 +4,21 @@ Template.homePage.helpers({
   }
 });
 
+Template.homePage.events({
+  'click .sectionYear': function (e) {
+    Router.go('/section/'+this.name+'/'+$(e.target).data('year'));
+  },
+  'mouseover .sectionYear': function(e){
+      var classColor = "green lighten-5";
+    $(e.target).closest("li").addClass(classColor);
+  },
+  'mouseleave .sectionYear': function(e){
+    var classColor = "green lighten-5";
+    $(e.target).closest("li").removeClass(classColor);
+  }
+});
+
+
 Template.homePage.rendered = function () {
   setTimeout(function() {
     $(document).ready(function(){

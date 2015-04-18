@@ -1,6 +1,6 @@
 Router.configure({
 	layoutTemplate: 'layout',
-	//loadingTemplate: 'loading'
+	loadingTemplate: 'loading'
 	// notFoundTemplate: 'notFound'
 });
 
@@ -16,6 +16,24 @@ Router.route('/', {
 	data: function(){
 		return {
 			courses: Courses.find({}),
+			sections: Sections.find({})
+		}
+	}
+});
+
+Router.route('/section/:section/:year', {
+	name: 'courseList',
+	template: 'homePage',
+	waitOn: function(){
+		Meteor.subscribe("courses");
+		Meteor.subscribe("sections");
+	},
+	data: function(){
+		return {
+			courses: Courses.find({
+				section: this.params.section,
+				year: parseInt(this.params.year)
+			}),
 			sections: Sections.find({})
 		}
 	}
@@ -37,7 +55,7 @@ Router.route('/course/:_id', {
 	}
 });
 
-
+/*
 Router.route('/courses', {
 	name:'courseList',
 	template:'courseList',
@@ -50,4 +68,5 @@ Router.route('/courses', {
 		};
 	}
 })
+*/
 
