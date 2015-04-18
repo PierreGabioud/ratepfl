@@ -53,6 +53,7 @@ Router.route('/course/:_id', {
 		Meteor.subscribe("singleCourse", this.params._id);
 		Meteor.subscribe("comments", this.params._id);
 		Meteor.subscribe("ratings", this.params._id);
+		Meteor.subscribe("upvotesForUser", "userIDgoesHere")
 	},
 	data: function(){
 		return {

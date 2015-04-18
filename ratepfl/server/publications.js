@@ -22,3 +22,7 @@ Meteor.publish("ratings", function(parentID){
 
 	return Ratings.find({ratedID: parentID, userID: this.userId});
 });
+
+Meteor.publish('upvotesForUser', function(userID){
+	return Upvotes.find({userID: userID});
+});
