@@ -26,6 +26,29 @@ if(Courses.find().count() <2){
 	};
 }
 
+
+function createCourse(title, courseID, section, credits, teacher, year, semester){
+	if( !Courses.findOne({title:title}) ){
+
+		Courses.insert({
+			section: section,
+			title: title,
+			label: courseID,
+			semester: semester,
+			credits: credits,
+			teacher: teacher,
+			overallrating: 0,
+			year:year
+		});
+	}
+}
+
+
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+
+
+
+
 var courseID = Courses.findOne({})._id;
 
 
