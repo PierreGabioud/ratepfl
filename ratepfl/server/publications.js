@@ -5,3 +5,7 @@ Meteor.publish('courses', function(){
 Meteor.publish('ratings', function(){
 	return Ratings.find({});
 });
+
+Meteor.publish('comments', function(){
+	return Comments.find({});
+});
