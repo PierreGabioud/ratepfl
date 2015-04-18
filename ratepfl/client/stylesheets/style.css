@@ -3,9 +3,11 @@
 }
 
 body {
-  background-image: url("/img/epfl.jpg");
-  background-size: 100%;
-  background-attachment: fixed;
+  background: url("/img/epfl.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 .container {
