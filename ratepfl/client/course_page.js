@@ -28,12 +28,27 @@ Template.coursePage.helpers({
 		return (Number(this) <= Session.get("teacherRating")) ? "green-text text-darken-3" : "black-text";
 	},
 	getTeacherComment: function(){
-		if(Session.get("teacherRating") > 8){
+		var rating = Session.get("teacherRating");
+		if(rating == 10){
 			return "BEST TEACHER EVAH";
-		}else if(Session.get("teacherRating") >5 ){
-			
+		}else if(rating > 8 ){
+			return "Pretty awesome!";
+		}else if(rating > 5){
+			return "Allright";
+		}else if(rating > 3){
+			return "Maah";
+		}else{
+			return "STAHP";
 		}
-	}
+	},
+	lightenUpvote: function(){
+		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
+		return (vote.length > 0 && vote[0].type == 1)? "" : "text-lighten-4";
+	},
+	lightenDownvote: function(){
+		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
+		return (vote.length > 0 && vote[0].type == -1)? "" : "text-lighten-4";
+	},
 });
 
 
