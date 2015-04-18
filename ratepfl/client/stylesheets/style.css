@@ -8,7 +8,7 @@ body {
   background-attachment: fixed;
 }
 
-.container {
+.content-holder {
   background-color:rgba(255,255,255,0.9);
   border: 2px solid lightgrey
 }

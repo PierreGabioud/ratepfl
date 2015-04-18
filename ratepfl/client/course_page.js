@@ -106,11 +106,11 @@ Template.coursePage.helpers({
 	},
 
 	lightenUpvote: function(){
-		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
+		var vote = Upvotes.find({userID: Meteor.userId(), commentID: this._id}).fetch()
 		return (vote.length > 0 && vote[0].type == 1)? "" : "text-lighten-4";
 	},
 	lightenDownvote: function(){
-		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
+		var vote = Upvotes.find({userID: Meteor.userId(), commentID: this._id}).fetch()
 		return (vote.length > 0 && vote[0].type == -1)? "" : "text-lighten-4";
 	},
 });
@@ -165,11 +165,11 @@ Template.coursePage.events(
 		},
 		"click .upvote": function()
 		{
-			Meteor.call("upvote", "userIDgoesHere", this._id)
+			Meteor.call("upvote", Meteor.userId(), this._id)
 		},
 		"click .downvote": function()
 		{
-			Meteor.call("downvote", "userIDgoesHere", this._id)
+			Meteor.call("downvote", Meteor.userId(), this._id)
 		}
 
 });
