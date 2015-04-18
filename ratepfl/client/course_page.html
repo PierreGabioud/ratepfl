@@ -24,7 +24,7 @@
 
             <div class="nbHoursHeader rating-header row">
 
-                <div class="col s4">Number of hours/week : </div>
+                <div class="col s4">Hours per week : </div>
                 <div class="col s8">
                 {{#each zeroToTen}}
                 <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
@@ -43,6 +43,45 @@
                 {{getTeacherComment}}
             </div>
             </div>
+
+
+             <div class="difficultyHeader rating-header row">
+
+                <div class="col s4">Difficulty : </div>
+                <div class="col s8">
+                {{#each oneToTen}}
+                <i class="mdi-action-accessibility difficultyRating {{getDifficultyRatingColor}}" data-difficultyrating="{{this}}"></i>
+                {{/each}}
+                {{getDifficultyComment}}
+            </div>
+            </div>
+
+
+
+             <div class="interestHeader rating-header row">
+
+                <div class="col s4">Interest : </div>
+                <div class="col s8">
+                {{#each oneToTen}}
+                <i class="mdi-action-favorite interestRating {{getInterestRatingColor}}" data-interestrating="{{this}}"></i>
+                {{/each}}
+                {{getInterestComment}}
+            </div>
+            </div>
+
+             <div class="usefulnessHeader rating-header row">
+
+                <div class="col s4">usefulness : </div>
+                <div class="col s8">
+                {{#each oneToTen}}
+                <i class="mdi-action-trending-up usefulnessRating {{getUsefulnessRatingColor}}" data-usefulnessrating="{{this}}"></i>
+                {{/each}}
+                {{getUsefulnessComment}}
+            </div>
+            </div>
+
+
+
         </div>
 
         <div class="row">

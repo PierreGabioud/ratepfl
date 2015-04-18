@@ -40,17 +40,7 @@ Template.coursePage.helpers({
 	zeroToTen: function(){
 		return [1,2,3,4,5,6,7,8,9,10];
 	},
-	getNbHoursColor: function(){
-
-		if(Session.get("nbHoursRating")){
-			return (Number(this) <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
-		}else{
-			var value = Ratings.findOne({});
-			if(value){
-					return ( Number(this) <= value.ratingHours) ? "red-text text-darken-3" : "black-text";
-			}
-		}
-	},
+	
 	getNbHours: function(){
 		if(Session.get("nbHoursRating")){
 			return Session.get("nbHoursRating")*2 -2;
@@ -59,6 +49,17 @@ Template.coursePage.helpers({
 			if(value){
 				return value.ratingHours * 2 -2;
 
+			}
+		}
+	},
+	getNbHoursColor: function(){
+
+		if(Session.get("nbHoursRating")){
+			return (Number(this) <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
+		}else{
+			var value = Ratings.findOne({});
+			if(value){
+					return ( Number(this) <= value.ratingHours) ? "red-text text-darken-3" : "black-text";
 			}
 		}
 	},
@@ -72,6 +73,43 @@ Template.coursePage.helpers({
 				return (Number(this) <= Session.get("teacherRating")) ? "green-text text-darken-3" : "black-text";
 			}
 	},
+	getDifficultyRatingColor: function(){
+
+		if(!Session.get("difficultyRating")){
+			var value = Ratings.findOne({});
+			if(value){
+						return (Number(this) <= value.ratingDifficulty ) ? "orange-text text-darken-3" : "black-text";
+			}
+			}else{
+				return (Number(this) <= Session.get("difficultyRating")) ? "orange-text text-darken-3" : "black-text";
+			}
+		},
+		getInterestRatingColor: function(){
+
+		if(!Session.get("interestRating")){
+			var value = Ratings.findOne({});
+			if(value){
+						return (Number(this) <= value.ratingInterest ) ? "pink-text text-darken-3" : "black-text";
+			}
+			}else{
+				return (Number(this) <= Session.get("interestRating")) ? "pink-text text-darken-3" : "black-text";
+			}
+		},
+		getUsefulnessRatingColor: function(){
+
+		if(!Session.get("usefulnessRating")){
+			var value = Ratings.findOne({});
+			if(value){
+						return (Number(this) <= value.ratingUsefulness ) ? "blue-text text-darken-3" : "black-text";
+			}
+			}else{
+				return (Number(this) <= Session.get("usefulnessRating")) ? "blue-text text-darken-3" : "black-text";
+			}
+		},
+
+
+
+
 	getTeacherComment: function(){
 		var rating=0;
 		if(Session.get("teacherRating")){
@@ -126,6 +164,128 @@ Template.coursePage.helpers({
 			return "Nice";
 		}
 	},
+	getDifficultyComment: function(){
+		var rating=0;
+		console.log("SEETING = "+Session.get("difficultyRating"));
+
+		if(Session.get("difficultyRating")){
+			rating = Session.get("difficultyRating");
+		}else{
+			var val = Ratings.findOne({});
+			if(val) rating = val.ratingDifficulty;
+		}
+		
+		console.log("RATING = "+rating);
+
+		if(rating > 9){
+			return "HARDCORE";
+		}else if(rating > 8 ){
+			return "Very hard";	
+		}else if(rating > 7){
+			return "Hard";
+		}
+		else if(rating > 6){
+			return "Pretty hard";
+		}
+
+		else if(rating > 5){
+			return "Kinda hard";
+		}else if(rating > 4){
+			return "Average";
+		}else if(rating >3){
+			return "Easy";
+		}
+		else if(rating >2){
+			return "Very easy";
+		}
+		else if(rating >1){
+			return "VERY easy";
+		}else{
+			return "lol";
+		}
+	},
+	getInterestComment: function(){
+		var rating=0;
+		console.log("SEETING = "+Session.get("interestRating"));
+
+		if(Session.get("interestRating")){
+			rating = Session.get("interestRating");
+		}else{
+			var val = Ratings.findOne({});
+			if(val) rating = val.ratingInterest;
+		}
+		
+		console.log("RATING = "+rating);
+
+		if(rating > 9){
+			return "∞ interesting";
+		}else if(rating > 8 ){
+			return "SUPER interesting";	
+		}else if(rating > 7){
+			return "Very interesting";
+		}
+		else if(rating > 6){
+			return "Interesting";
+		}
+
+		else if(rating > 5){
+			return "Alright";
+		}else if(rating > 4){
+			return "Not so interesing";
+		}else if(rating >3){
+			return "Boring";
+		}
+		else if(rating >2){
+			return "Very boring";
+		}
+		else if(rating >1){
+			return "Good night";
+		}else{
+			return "SHS boring";
+		}
+	},
+	getUsefulnessComment: function(){
+		var rating=0;
+		console.log("SEETING = "+Session.get("usefulnessRating"));
+
+		if(Session.get("usefulnessRating")){
+			rating = Session.get("usefulnessRating");
+		}else{
+			var val = Ratings.findOne({});
+			if(val) rating = val.ratingUsefulness;
+		}
+		
+		console.log("RATING = "+rating);
+
+		if(rating > 9){
+			return "∞ interesting";
+		}else if(rating > 8 ){
+			return "SUPER interesting";	
+		}else if(rating > 7){
+			return "Very interesting";
+		}
+		else if(rating > 6){
+			return "Interesting";
+		}
+
+		else if(rating > 5){
+			return "Alright";
+		}else if(rating > 4){
+			return "Not so interesing";
+		}else if(rating >3){
+			return "Boring";
+		}
+		else if(rating >2){
+			return "Very boring";
+		}
+		else if(rating >1){
+			return "Good night";
+		}else{
+			return "SHS boring";
+		}
+	},
+
+
 
 	lightenUpvote: function(){
 		var vote = Upvotes.find({userID: Meteor.userId(), commentID: this._id}).fetch()
@@ -140,31 +300,53 @@ Template.coursePage.helpers({
 
 Template.coursePage.events({
 	'mouseover .nbhoursrating': function (e) {
-		//console.log($(e.target).data("nbhours"));
-		// console.log("hoer");
 		Session.set("nbHoursRating", $(e.target).data("nbhoursrating"));
 	},
-	'mouseleave .nbHoursHeader': function(e){
-		console.log("Mouse leave");
-		Session.set("nbHoursRating", "");
-	},
 	'mouseover .teacherRating': function(e){
-		// console.log($(e.target).data("teacherrating"));
 		Session.set("teacherRating", $(e.target).data("teacherrating"));
 	},
+	'mouseover .difficultyRating': function(e){
+		Session.set("difficultyRating", $(e.target).data("difficultyrating"));
+	},
+	'mouseover .interestRating': function(e){
+		Session.set("interestRating", $(e.target).data("interestrating"));
+	},
+	'mouseover .usefulnessRating': function(e){
+		Session.set("usefulnessRating", $(e.target).data("usefulnessrating"));
+	},
+
+	'mouseleave .nbHoursHeader': function(e){
+		Session.set("nbHoursRating", "");
+	},
 	'mouseleave .teacherHeader': function(e){
-		console.log("Mouse leave");
 		Session.set("teacherRating", "");
 	},
+	'mouseleave .difficultyHeader': function(e){
+		Session.set("difficultyRating", "");
+	},
+	'mouseleave .interestHeader': function(e){
+		Session.set("interestRating", "");
+	},
+	'mouseleave .usefulnessHeader': function(e){
+		Session.set("usefulnessRating", "");
+	},
+
 	'click .teacherRating': function(e, t){
-
-		//console.log($(e.target).data("teacherrating")+" and courseID = "+t.data.course._id);
-
-		Meteor.call("changeRatingTeaching", t.data.course._id, $(e.target).data("teacherrating"));
+		Meteor.call("changeRating", t.data.course._id, $(e.target).data("teacherrating"), "teacher");
 	},
 	'click .nbhoursrating': function(e,t){
-		Meteor.call("changeRatingHours", t.data.course._id, $(e.target).data("nbhoursrating"))
+		Meteor.call("changeRating", t.data.course._id, $(e.target).data("nbhoursrating"), "hours")
 	},
+	'click .difficultyRating': function(e,t){
+		Meteor.call("changeRating", t.data.course._id, $(e.target).data("difficultyrating"), "difficulty")
+	},
+	'click .interestRating': function(e,t){
+		Meteor.call("changeRating", t.data.course._id, $(e.target).data("interestrating"), "interest")
+	},
+	'click .usefulnessRating': function(e,t){
+		Meteor.call("changeRating", t.data.course._id, $(e.target).data("usefulnessrating"), "usefulness")
+	},
+	
 	'click .new-button': function(e,t){
 		Session.set("sortMode", "new");
 	},

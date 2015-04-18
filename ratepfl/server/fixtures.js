@@ -71,7 +71,9 @@ if( !Ratings.findOne({userID: "CaiM7wLtSax3uMiA8"}) ){
 				userID: "CaiM7wLtSax3uMiA8",
 				ratedID: courseID,
 				ratingHours:getRandomBetween(2,10),
-				ratingTeacher: getRandomBetween(1,10)
+				ratingTeacher: getRandomBetween(1,10),
+				ratingDifficulty: getRandomBetween(1,10),
+				ratingInterest: getRandomBetween(1,10)
 
 			});
 
