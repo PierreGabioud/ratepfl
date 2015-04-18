@@ -3,28 +3,15 @@
 <div class="container">
 <h3 class="center">RatEPFL</h3>
 
-<table class="hoverable">
-	<thead>
-		<tr>
-			<th>Course title</th>
-			<th>Teacher</th>
-			<th>Credits</th>
-		</tr>
-	</thead>
 
-	<tbody>
+<ul class="collection">
+	{{#each getCourses}}
+    <li class="collection-item">{{title}} by {{teacher}}</li>
+   {{/each}}
+</ul>
 
 
-		{{#each getCourses}}
-		<tr class="courseRow">
-			<td>{{title}}</td>
-			<td>{{teacher}}</td>
-			<td>{{credits}}</td>
-		</tr>
-		{{/each}}
 
-	</tbody>
-</table>
 
 </div>
 

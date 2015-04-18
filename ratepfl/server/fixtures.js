@@ -7,7 +7,7 @@ var getRandomBetween = function(min, max){
 //Courses.remove({});
 
 
-if(Courses.find().count() == 0){
+if(Courses.find().count() <2){
 	for (var i = 0; i <=10; i++) {
 		
 		Courses.insert({
@@ -16,7 +16,8 @@ if(Courses.find().count() == 0){
 			semester: getRandomBetween(1,2),
 			credits: getRandomBetween(4,7),
 			teacher: "Michael Jordan",
-			overallrating: 8.6
+			overallrating: 8.6,
+			year:getRandomBetween(1,5)
 
 		});
 
