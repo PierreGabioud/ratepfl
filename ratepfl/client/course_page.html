@@ -3,6 +3,7 @@
 
     <div class="container content-holder">
 
+        {{#if course}}
 
         {{#with course}}
         <br>
@@ -87,6 +88,13 @@
             </div>
 
         </div>
+
+        {{else}}
+
+            <h2>Oups, we can't find this course</h2>
+            <h4>Try selecting a course from the <a href="/">list</a></h4>
+            <br/>
+        {{/if}}
 
     </div>
 
