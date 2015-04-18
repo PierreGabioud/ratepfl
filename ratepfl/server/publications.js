@@ -14,3 +14,7 @@ Meteor.publish('ratings', function(){
 Meteor.publish('comments', function(courseID){
 	return Comments.find({courseID: courseID});
 });
+
+Meteor.publish('sections', function(){
+  return Sections.find({});
+});

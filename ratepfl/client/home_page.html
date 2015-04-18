@@ -2,7 +2,18 @@
 
 	<div class="container">
 <h3 class="center">RatEPFL</h3>
-
+<ul class="collapsible" data-collapsible="accordion">
+	{{#each getSections}}
+	<li>
+		<div class="collapsible-header"><i class="mdi-image-filter-drama"></i>{{name}}</div>
+		<div class="collapsible-body">
+			<div>a</div>
+			<div>b</div>
+		</div>
+	</li>
+	{{/each}}
+</ul>
+<!--
 <table class="hoverable">
 	<thead>
 		<tr>
@@ -24,7 +35,7 @@
 
 	</tbody>
 </table>
-
+-->
 </div>
 
 </template>

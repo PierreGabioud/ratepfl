@@ -11,10 +11,12 @@ Router.route('/', {
 	template: 'homePage',
 	waitOn: function(){
 		Meteor.subscribe("courses");
+		Meteor.subscribe("sections");
 	},
 	data: function(){
 		return {
 			courses: Courses.find({}),
+			sections: Sections.find({})
 		}
 	}
 });
