@@ -5,7 +5,15 @@ Template.coursePage.helpers({
 		return this.course;
 	},
 	comments: function(){
-		return this.comments;
+		// return _.sortBy(this.comments.fetch(), function(o) {
+		// 	return o.downvotes - o.upvotes;
+		// });
+
+		return _.sortBy(this.comments.fetch(), function(o) {
+			return -1 * o.timestamp;
+		});
+
+
 	},
 	semesterName: function(){
 		return SEMESTER_NAMES[this.semester-1];
@@ -163,5 +171,5 @@ Template.coursePage.events(
 		{
 			Meteor.call("downvote", "userIDgoesHere", this._id)
 		}
-	
+
 });
