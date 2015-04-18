@@ -22,21 +22,21 @@
             <h4 class="center">Rate this course!</h4>
             <br>
 
-            <div class="nbHoursHeader rating-header row">
+            <div class="nbHoursHeader rating-header">
 
-                <div class="col s4">Hours per week : </div>
-                <div class="col s8">
+                <div class="col s3">Hours per week : </div>
+                <div class="col s9">
                 {{#each zeroToTen}}
                 <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
                 {{/each}}
-                {{getNbHours}}h {{getHoursComment}}
+                {{getHoursComment}}
                 </div>
             </div>
 
-            <div class="teacherHeader rating-header row">
+            <div class="teacherHeader rating-header">
 
-                <div class="col s4">Teacher : </div>
-                <div class="col s8">
+                <div class="col s3">Teacher : </div>
+                <div class="col s9">
                 {{#each oneToTen}}
                 <i class="mdi-action-thumb-up teacherRating {{getTeacherRatingColor}}" data-teacherrating="{{this}}"></i>
                 {{/each}}
@@ -45,10 +45,10 @@
             </div>
 
 
-             <div class="difficultyHeader rating-header row">
+             <div class="difficultyHeader rating-header">
 
-                <div class="col s4">Difficulty : </div>
-                <div class="col s8">
+                <div class="col s3">Difficulty : </div>
+                <div class="col s9">
                 {{#each oneToTen}}
                 <i class="mdi-action-accessibility difficultyRating {{getDifficultyRatingColor}}" data-difficultyrating="{{this}}"></i>
                 {{/each}}
@@ -58,10 +58,10 @@
 
 
 
-             <div class="interestHeader rating-header row">
+             <div class="interestHeader rating-header">
 
-                <div class="col s4">Interest : </div>
-                <div class="col s8">
+                <div class="col s3">Interest : </div>
+                <div class="col s9">
                 {{#each oneToTen}}
                 <i class="mdi-action-favorite interestRating {{getInterestRatingColor}}" data-interestrating="{{this}}"></i>
                 {{/each}}
@@ -69,10 +69,10 @@
             </div>
             </div>
 
-             <div class="usefulnessHeader rating-header row">
+             <div class="usefulnessHeader rating-header">
 
-                <div class="col s4">usefulness : </div>
-                <div class="col s8">
+                <div class="col s3">usefulness : </div>
+                <div class="col s9">
                 {{#each oneToTen}}
                 <i class="mdi-action-trending-up usefulnessRating {{getUsefulnessRatingColor}}" data-usefulnessrating="{{this}}"></i>
                 {{/each}}

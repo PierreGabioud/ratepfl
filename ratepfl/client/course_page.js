@@ -119,6 +119,7 @@ Template.coursePage.helpers({
 			if(val) rating = val.ratingTeacher;
 		}
 
+
 		if(rating == 10){
 			return "BEST TEACHER EVAH";
 		}else if(rating > 8 ){
@@ -136,7 +137,7 @@ Template.coursePage.helpers({
 			return "Alright";
 		}else if(rating > 3){
 			return "Maah";
-		}else{
+		}else if(rating == 1){
 			return "STAHP";
 		}
 	},
@@ -149,20 +150,35 @@ Template.coursePage.helpers({
 			if(val) rating = val.ratingHours;
 		}
 		
+		var h = (rating*2-2)+"h ";
+
 
 		if(rating > 10){
-			return "BIG DATA?";
-		}else if(rating > 8 ){
-			return "Wtf";
-		}else if(rating > 5){
-			return "Wow";
-		}else if(rating > 3){
-			return "Maah";
-		}else if(rating >1){
-			return "Go Study!";
-		}else{
-			return "Nice";
+			return h+"BIG DATA?";
 		}
+		else if(rating > 9 ){
+			return h+"Oh God";
+		}
+		else if(rating > 8 ){
+			return h+"Wtf";
+		}
+		else if(rating > 7){
+			return h+"WOW";
+		}
+		else if(rating > 6){
+			return h+"Wow";
+		}
+
+		else if(rating > 5){
+			return h+"Wow";
+		}else if(rating > 3){
+			return h+"Maah";
+		}else if(rating >1){
+			return h+"Go Study!";
+		} else if(rating == 1){
+			return h+"Nice";
+		}
+
 	},
 	getDifficultyComment: function(){
 		var rating=0;
@@ -200,7 +216,7 @@ Template.coursePage.helpers({
 		}
 		else if(rating >1){
 			return "VERY easy";
-		}else{
+		}else if(rating ==1){
 			return "lol";
 		}
 	},
@@ -240,7 +256,7 @@ Template.coursePage.helpers({
 		}
 		else if(rating >1){
 			return "Good night";
-		}else{
+		}else if(rating == 1){
 			return "SHS boring";
 		}
 	},
@@ -280,7 +296,7 @@ Template.coursePage.helpers({
 		}
 		else if(rating >1){
 			return "Good night";
-		}else{
+		}else if(rating == 1) {
 			return "SHS boring";
 		}
 	},

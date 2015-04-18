@@ -12,3 +12,7 @@ Template.navbar.events({
         Meteor.logout();
     },
 });
+
+Template.navbar.rendered = function () {
+	$(".button-collapse").sideNav();
+};
