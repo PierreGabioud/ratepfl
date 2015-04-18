@@ -30,7 +30,7 @@ Router.route('/course/:_id', {
 	data: function(){
 		return {
 			course: Courses.findOne({}),
-			comments: Comments.find({}, {sort: {upvote: -1})
+			comments: Comments.find({}, {sort: {upvote: -1}})
 		};
 	}
 });
@@ -44,7 +44,7 @@ Router.route('/courses', {
 	},
 	data: function(){
 		return {
-			courses: Courses.findOne({}),
+			courses: Courses.findOne({})
 		};
 	}
 })
