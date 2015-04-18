@@ -8,3 +8,5 @@ meteor-platform
 iron:router
 materialize:materialize
 jquery
+accounts-password
+useraccounts:materialize

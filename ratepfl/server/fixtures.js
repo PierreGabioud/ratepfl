@@ -59,20 +59,26 @@ if(Sections.find().count() == 0){
 	};
 }
 
-
-if(Ratings.find().count() <= 2){
+if(Meteor.users.findOne({_id: "CaiM7wLtSax3uMiA8"})){
+	console.log("creating pierre");
 	
-	for (var i = 0; i <=30; i++) {
+
+if( !Ratings.findOne({userID: "CaiM7wLtSax3uMiA8"}) ){
+	
 	
 			Ratings.insert({
 
-				userID: "sdkfjsdf",
+				userID: "CaiM7wLtSax3uMiA8",
 				ratedID: courseID,
 				ratingHours:getRandomBetween(2,10),
 				ratingTeacher: getRandomBetween(1,10)
 
 			});
 
-	};
+	
 }
+
+}
+
+
 

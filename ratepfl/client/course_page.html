@@ -17,12 +17,12 @@
 
             <h4 class="center">Rate this course!</h4>
             <br>
-            <h5>Number of hours/week : 
+            <h5 class="nbHoursHeader">Number of hours/week : 
                 {{#each oneToTen}}
                 <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
                 {{/each}}
             </h5>
-            <h5>Teacher : 
+            <h5 class="teacherHeader">Teacher : 
                 {{#each oneToTen}}
                 <i class="mdi-action-thumb-up teacherRating {{getTeacherRatingColor}}" data-teacherrating="{{this}}"></i>
                 {{/each}}

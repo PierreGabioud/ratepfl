@@ -40,17 +40,25 @@ Router.route('/section/:section/:year', {
 });
 
 
+Router.route('/login', {
+	name: 'login',
+	template: 'login'
+});
+
+
 Router.route('/course/:_id', {
 	name:'coursePage',
 	template: 'coursePage',
 	waitOn: function(){
 		Meteor.subscribe("singleCourse", this.params._id);
 		Meteor.subscribe("comments", this.params._id);
+		Meteor.subscribe("ratings", this.params._id);
 	},
 	data: function(){
 		return {
 			course: Courses.findOne({}),
-			comments: Comments.find({}, {sort: {upvote: -1}})
+			comments: Comments.find({}, {sort: {upvote: -1}}),
+			ratings: Ratings.find({})
 		};
 	}
 });

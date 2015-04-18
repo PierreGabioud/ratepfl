@@ -17,6 +17,10 @@ Template.coursePage.helpers({
 		return [1,2,3,4,5,6,7,8,9,10];
 	},
 	getNbHoursColor: function(){
+
+		if(!Session.get("nbHoursRating")){
+			return(this.ratingHours <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
+		}
 		return (Number(this) <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
 	},
 	getTeacherRatingColor: function(){
@@ -32,12 +36,21 @@ Template.coursePage.events({
 		// console.log("hoer");
 		Session.set("nbHoursRating", $(e.target).data("nbhoursrating"));
 	},
+	'mouseleave .nbHoursHeader': function(e){
+		console.log("Mouse leave");
+		Session.set("nbHoursRating", "");
+	},
 	'mouseover .teacherRating': function(e){
 		// console.log($(e.target).data("teacherrating"));
 		Session.set("teacherRating", $(e.target).data("teacherrating"));
 	},
+	'mouseleave .teacherHeader': function(e){
+		console.log("Mouse leave");
+		Session.set("teacherRating", "");
+	},
 	'click .teacherRating': function(e){
 		console.log($(e.target).data("teacherrating"));
+		Meteor.call("changeRating");
 	}
 });
 Template.coursePage.events(
@@ -66,3 +79,4 @@ Template.coursePage.events(
 			Meteor.call("downvote", "userIDgoesHere", this._id)
 		}
 	})
+});
