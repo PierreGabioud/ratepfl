@@ -31,12 +31,12 @@ var courseID = Courses.findOne({})._id;
 
 //Comments.remove({});
 
-/*if(Comments.find().count() == 0){
+if(Comments.find().count() == 0){
 	for (var i = 0; i <=50; i++) {
 
 		Comments.insert({
 			courseID: courseID,
-			content: "Rien à branler de ce cours de merde",
+			content: getRandomBetween(0,100)+"Rien à branler de ce cours de merde , mais à revoir selon la disponibilité du prof...",
 			upvotes: getRandomBetween(0,10),
 			downvotes: getRandomBetween(0,10),
 
@@ -44,7 +44,7 @@ var courseID = Courses.findOne({})._id;
 
 
 	};
-}*/
+}
 
 if(Sections.find().count() == 0){
 	Sections.insert({

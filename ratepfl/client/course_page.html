@@ -5,20 +5,25 @@
 
 
         {{#with course}}
-        <h2>{{title}}</h2>
-        <h3>{{teacher}}</h3>
-        <h4>{{label}} - {{semesterName}}</h4>
+        <br>
+        <h2 class="center">{{title}}</h2>
+        <h3 class="center">{{teacher}}</h3>
+        <h4 class="center">{{label}} - {{semesterName}}</h4>
             <br/>
+         <div class="center">
         <label>Comments</label> <b>{{commentsNb}}</b> - <label>Overall Rating</label> <b>{{overallrating}}</b>
+        </div>   
         {{/with}}
 
 
         <div class="row">
+            <hr>
+
 
             <h4 class="center">Rate this course!</h4>
             <br>
             <h5 class="nbHoursHeader">Number of hours/week : 
-                {{#each oneToTen}}
+                {{#each zeroToTen}}
                 <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
                 {{/each}}
                 {{getNbHours}}h {{getHoursComment}}
@@ -41,14 +46,24 @@
 
         <div class="row">
             {{#each comments}}
-            <div class="col s12 m6">
+            <div class="col s12">
                 <div class="card">
                     <div class="card-content black-text">
                         <span class=" black-text card-title">{{content}}</span>
                     </div>
-                    <div class="card-action right-align" style="padding: 10px;">
+
+                    <div class="card-action" style="padding: 10px;">
+
+                        <div class="col s4">
+                            {{formatDate timestamp}}
+                        </div>
+                        <div class="col s8 right-align">
+
                         <a class="green-text {{lightenUpvote}} upvote"><i class="mdi-content-add-circle"></i>{{upvotes}}</a>
                         <a class="red-text {{lightenDownvote}} downvote"><i class="mdi-content-remove-circle"></i>{{downvotes}}</a>
+
+                        </div>
+
                     </div>
                 </div>
             </div>

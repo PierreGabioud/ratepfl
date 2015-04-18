@@ -10,7 +10,7 @@ Meteor.publish('singleCourse', function(id){
 
 
 Meteor.publish('comments', function(courseID){
-	return Comments.find({courseID: courseID});
+	return Comments.find({courseID: courseID}, {sort: {upvote: 1}});
 });
 
 Meteor.publish('sections', function(){

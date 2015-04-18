@@ -10,3 +10,4 @@ materialize:materialize
 jquery
 accounts-password
 useraccounts:materialize
+momentjs:moment

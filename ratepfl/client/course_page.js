@@ -16,23 +16,29 @@ Template.coursePage.helpers({
 	oneToTen: function(){
 		return [1,2,3,4,5,6,7,8,9,10];
 	},
+	zeroToTen: function(){
+		return [1,2,3,4,5,6,7,8,9,10,11];
+	},
 	getNbHoursColor: function(){
 
-		if(!Session.get("nbHoursRating")){
+		if(Session.get("nbHoursRating")){
+			return (Number(this) <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
+		}else{
 			var value = Ratings.findOne({});
 			if(value){
 					return ( Number(this) <= value.ratingHours) ? "red-text text-darken-3" : "black-text";
 			}
-
-		}else{
-			return (Number(this) <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
 		}
 	},
 	getNbHours: function(){
 		if(Session.get("nbHoursRating")){
-			return Session.get("nbHoursRating")*2;
+			return Session.get("nbHoursRating")*2 -2;
 		}else{
-			return Ratings.findOne({}).ratingHours * 2;
+			var value = Ratings.findOne({});
+			if(value){
+				return value.ratingHours * 2 -2;
+
+			}
 		}
 	},
 	getTeacherRatingColor: function(){
@@ -46,7 +52,14 @@ Template.coursePage.helpers({
 			}
 	},
 	getTeacherComment: function(){
-		var rating = Session.get("teacherRating");
+		var rating=0;
+		if(Session.get("teacherRating")){
+			rating = Session.get("teacherRating");
+		}else{
+			var val = Ratings.findOne({});
+			if(val) rating = val.ratingTeacher;
+		}
+
 		if(rating == 10){
 			return "BEST TEACHER EVAH";
 		}else if(rating > 8 ){
@@ -60,8 +73,16 @@ Template.coursePage.helpers({
 		}
 	},
 	getHoursComment: function(){
-		var rating = Session.get("nbHoursRating");
-		if(rating == 10){
+		var rating=0;
+		if(Session.get("nbHoursRating")){
+			rating = Session.get("nbHoursRating");
+		}else{
+			var val = Ratings.findOne({});
+			if(val) rating = val.ratingHours;
+		}
+		
+
+		if(rating > 11){
 			return "BIG DATA?";
 		}else if(rating > 8 ){
 			return "Wtf";
@@ -74,7 +95,7 @@ Template.coursePage.helpers({
 		}else{
 			return "Nice";
 		}
-	}
+	},
 
 	lightenUpvote: function(){
 		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
