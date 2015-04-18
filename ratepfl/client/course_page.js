@@ -26,6 +26,13 @@ Template.coursePage.helpers({
 	getTeacherRatingColor: function(){
 		// console.log(Number(this)+" vs "+Session.get("teacherRating"));
 		return (Number(this) <= Session.get("teacherRating")) ? "green-text text-darken-3" : "black-text";
+	},
+	getTeacherComment: function(){
+		if(Session.get("teacherRating") > 8){
+			return "BEST TEACHER EVAH";
+		}else if(Session.get("teacherRating") >5 ){
+			
+		}
 	}
 });
 
@@ -53,6 +60,8 @@ Template.coursePage.events({
 		Meteor.call("changeRating");
 	}
 });
+
+
 Template.coursePage.events(
 	{
 		"submit .new-comment": function(event)
@@ -78,5 +87,5 @@ Template.coursePage.events(
 		{
 			Meteor.call("downvote", "userIDgoesHere", this._id)
 		}
-	})
+	
 });
