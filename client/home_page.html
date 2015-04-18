@@ -1,0 +1,30 @@
+<template name="homePage">
+
+	<div class="container">
+<h3 class="center">RatEPFL</h3>
+
+<table class="hoverable">
+	<thead>
+		<tr>
+			<th>Course title</th>
+			<th>Teacher</th>
+			<th>Credits</th>
+		</tr>
+	</thead>
+
+	<tbody>
+
+		{{#each courses}}
+		<tr>
+			<td>{{title}}</td>
+			<td>{{teacher}}</td>
+			<td>{{credits}}</td>
+		</tr>
+		{{/each}}
+
+	</tbody>
+</table>
+
+</div>
+
+</template>
