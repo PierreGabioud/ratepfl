@@ -2,6 +2,16 @@
 	cursor: default!important;
 }
 
+body {
+  background-image: url("/img/epfl.jpg");
+  background-size: 100%;
+  background-attachment: fixed;
+}
+
+.container {
+  background-color:rgba(255,255,255,0.5);
+}
+
 .section.collection {
   border: 0;
   padding: 0;
