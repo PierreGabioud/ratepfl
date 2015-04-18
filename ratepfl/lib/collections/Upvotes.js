@@ -26,6 +26,11 @@ setVote = function(userID, commentID, vote)
             Upvotes.update({userID: userID, commentID: commentID}, { $set: {type: vote}});
             Comments.update({_id: commentID}, { $inc: { upvotes: vote, downvotes: -vote }});
         }
+        else
+        {
+            Upvotes.remove({userID: userID, commentID: commentID})
+            Comments.update({_id: commentID}, { $inc: { upvotes: vote==1? -1:0, downvotes:  vote==-1? -1:0 }});
+        }
 
     }
     else
