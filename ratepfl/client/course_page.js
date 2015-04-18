@@ -31,5 +31,13 @@ Template.coursePage.events(
 			$('#modal-add-comment').closeModal();
 
 			return false;
+		},
+		"click .upvote": function()
+		{
+			Meteor.call("upvote", "userIDgoesHere", this._id)
+		},
+		"click .downvote": function()
+		{
+			Meteor.call("downvote", "userIDgoesHere", this._id)
 		}
 	})
