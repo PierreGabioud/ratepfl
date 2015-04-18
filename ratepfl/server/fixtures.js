@@ -45,3 +45,16 @@ if(Comments.find().count() == 0){
 	};
 }
 
+
+
+if(Ratings.find().count() == 0){
+	Ratings.insert({
+
+		userID: "sdkfjsdf",
+		ratedID: courseID,
+		value:getRandomBetween(2,10),
+		type: getRandomBetween(0,3)
+
+	});
+}
+
