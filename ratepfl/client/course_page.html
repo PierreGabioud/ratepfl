@@ -1,7 +1,7 @@
 <template name="coursePage" xmlns="http://www.w3.org/1999/html">
 
 
-    <div class="container">
+    <div class="container content-holder">
 
 
         {{#with course}}
@@ -17,8 +17,6 @@
 
 
         <div class="row">
-            <hr>
-
 
             <h4 class="center">Rate this course!</h4>
             <br>
@@ -37,12 +35,11 @@
         </div>
 
 
-
-
-
-
-
         <br/><br/>
+
+        <div class="row center">
+            <a href="#" class="best-button {{getUnderline 'best'}}">Best</a> <a href="#" class="new-button {{getUnderline 'new'}}">New</a>
+        </div>
 
         <div class="row">
             {{#each comments}}
@@ -52,7 +49,7 @@
                         <span class=" black-text card-title">{{content}}</span>
                     </div>
 
-                    <div class="card-action" style="padding: 10px;">
+                    <div class="card-action row" style="padding: 10px; margin: 0">
 
                         <div class="col s4">
                             {{formatDate timestamp}}

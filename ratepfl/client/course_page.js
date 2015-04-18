@@ -1,19 +1,32 @@
 SEMESTER_NAMES = ['Autumn Semester', 'spring semester'];
 
+Template.coursePage.rendered = function () {
+	Session.set("sortMode", "new");
+};
+
+
 Template.coursePage.helpers({
 	course: function(){
 		return this.course;
 	},
 	comments: function(){
-		// return _.sortBy(this.comments.fetch(), function(o) {
-		// 	return o.downvotes - o.upvotes;
-		// });
+		if(Session.get("sortMode") == "best"){
+			return _.sortBy(this.comments.fetch(), function(o) {
+				return o.downvotes - o.upvotes;
+			});
+		}
+		else{
+			return _.sortBy(this.comments.fetch(), function(o) {
+				return -1 * o.timestamp;
+			});
+		}
 
-		return _.sortBy(this.comments.fetch(), function(o) {
-			return -1 * o.timestamp;
-		});
 
-
+	},
+	getUnderline: function(sortMode){
+		if(sortMode == Session.get("sortMode")){
+			return "underline";
+		}
 	},
 	semesterName: function(){
 		return SEMESTER_NAMES[this.semester-1];
@@ -106,11 +119,11 @@ Template.coursePage.helpers({
 	},
 
 	lightenUpvote: function(){
-		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
+		var vote = Upvotes.find({userID: Meteor.userId(), commentID: this._id}).fetch()
 		return (vote.length > 0 && vote[0].type == 1)? "" : "text-lighten-4";
 	},
 	lightenDownvote: function(){
-		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
+		var vote = Upvotes.find({userID: Meteor.userId(), commentID: this._id}).fetch()
 		return (vote.length > 0 && vote[0].type == -1)? "" : "text-lighten-4";
 	},
 });
@@ -142,6 +155,12 @@ Template.coursePage.events({
 	},
 	'click .nbhoursrating': function(e,t){
 		Meteor.call("changeRatingHours", t.data.course._id, $(e.target).data("nbhoursrating"))
+	},
+	'click .new-button': function(e,t){
+		Session.set("sortMode", "new");
+	},
+	'click .best-button': function(e,t){
+		Session.set("sortMode", "best");
 	}
 });
 
@@ -165,11 +184,11 @@ Template.coursePage.events(
 		},
 		"click .upvote": function()
 		{
-			Meteor.call("upvote", "userIDgoesHere", this._id)
+			Meteor.call("upvote", Meteor.userId(), this._id)
 		},
 		"click .downvote": function()
 		{
-			Meteor.call("downvote", "userIDgoesHere", this._id)
+			Meteor.call("downvote", Meteor.userId(), this._id)
 		}
 
 });
