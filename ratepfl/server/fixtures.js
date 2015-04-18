@@ -24,7 +24,7 @@ if(Courses.find().count() == 0){
 	};
 }
 
-var courseID = Comments.findOne({})._id;
+var courseID = Courses.findOne({})._id;
 
 
 //Comments.remove({});
