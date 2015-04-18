@@ -75,6 +75,15 @@ Template.coursePage.helpers({
 			return "Nice";
 		}
 	}
+
+	lightenUpvote: function(){
+		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
+		return (vote.length > 0 && vote[0].type == 1)? "" : "text-lighten-4";
+	},
+	lightenDownvote: function(){
+		var vote = Upvotes.find({userID: "userIDgoesHere", commentID: this._id}).fetch()
+		return (vote.length > 0 && vote[0].type == -1)? "" : "text-lighten-4";
+	},
 });
 
 

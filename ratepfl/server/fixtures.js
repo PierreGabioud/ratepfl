@@ -31,7 +31,7 @@ var courseID = Courses.findOne({})._id;
 
 //Comments.remove({});
 
-if(Comments.find().count() == 0){
+/*if(Comments.find().count() == 0){
 	for (var i = 0; i <=50; i++) {
 
 		Comments.insert({
@@ -44,7 +44,7 @@ if(Comments.find().count() == 0){
 
 
 	};
-}
+}*/
 
 if(Sections.find().count() == 0){
 	Sections.insert({
