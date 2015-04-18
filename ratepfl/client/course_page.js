@@ -428,6 +428,9 @@ Template.coursePage.events(
 
 Template.coursePage.rendered = function () {
   setTimeout(function() {
-  	$('.modal-trigger').leanModal();
-  }, 200);
+  	console.log("DONE");
+  	//$('.modal-trigger').leanModal();
+  	 $('.modal-trigger').leanModal();
+
+  }, 1000);
 }
