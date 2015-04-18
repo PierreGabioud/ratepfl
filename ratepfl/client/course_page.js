@@ -376,6 +376,7 @@ Template.coursePage.events(
 	{
 		"submit .new-comment": function(event)
 		{
+			event.preventDefault();
 			var courseID = this.course._id;
 			var comment = event.target.comment.value;
 			var timestamp = new Date().getTime();
