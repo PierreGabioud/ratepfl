@@ -53,13 +53,15 @@ Router.route('/course/:_id', {
 		Meteor.subscribe("singleCourse", this.params._id);
 		Meteor.subscribe("comments", this.params._id);
 		Meteor.subscribe("ratings", this.params._id);
-		Meteor.subscribe("upvotesForUser", Meteor.userId())
+		Meteor.subscribe("upvotesForUser", Meteor.userId());
+		Meteor.subscribe("subpartForCourse", this.params._id);
 	},
 	data: function(){
 		return {
 			course: Courses.findOne({}),
 			comments: Comments.find({}),
-			ratings: Ratings.find({})
+			ratings: Ratings.find({}),
+			subparts: Subparts.find({})
 		};
 	}
 });

@@ -43,8 +43,7 @@
                 {{getTeacherComment}}
             </div>
             </div>
-
-
+            
              <div class="difficultyHeader rating-header">
 
                 <div class="col s3">Difficulty : </div>
@@ -81,7 +80,6 @@
             </div>
 
 
-
         </div>
 
         <div class="row">
@@ -92,11 +90,30 @@
 
         <br/><br/>
 
-        <div class="row center">
-            <a href="#" class="best-button {{getUnderline 'best'}}">Best</a> | <a href="#" class="new-button {{getUnderline 'new'}}">New</a>
-        </div>
 
         <div class="row">
+            
+            <hr/>
+
+            <!-- SUBPARTS -->
+            <div class="col s3">
+                <p class="center">Subparts</p>
+                <div class="collection">
+                    <a class="subpart-general collection-item {{activeSubpartGeneral}}">General<label class="secondary-content">12</label></a>
+                    {{#each subparts}}
+                        <a class="subpart collection-item {{activeSubpart}}">{{name}}<label class="secondary-content">12</label></a>
+                    {{/each}}
+                    <a class="modal-trigger collection-item light text-lighten-3 add-subpart" href="#modal-add-subpart">Create subpart<i class="mdi-content-add secondary-content"></i></a>
+                </div>
+            </div>
+            <!-- SUBPART ENDS-->
+
+
+            <!-- COMMENTS-->
+            <div class="col s9 row">
+                <div class="center">
+                    <p><a href="#" class="best-button {{getUnderline 'best'}}">Best</a> | <a href="#" class="new-button {{getUnderline 'new'}}">New</a></p>
+                </div>
             {{#each comments}}
             <div class="col s12">
                 <div class="card">
@@ -120,7 +137,10 @@
                 </div>
             </div>
             {{/each}}
+            </div>
+            <!--COMMENTS ENDS-->
 
+            <!-- ADD COMMETN MODAL -->
             <div class="fixed-action-btn" style="bottom: 45px; right: 45px;">
                 <a class="modal-trigger btn-floating btn-large waves-effect waves-light red" href="#modal-add-comment">
                     <i class="large mdi-content-add"></i>
@@ -140,6 +160,24 @@
                     </div>
                 </form>
             </div>
+            <!-- ADD COMMENT MODAL ENDS-->
+
+            <!--ADD SUBPART MODAL-->
+            <div id="modal-add-subpart" class="modal">
+                <form class="new-subpart">
+                    <div class="modal-content">
+                        <h4>Create a new subpart</h4>
+                        <p>For instance: Project #1, Homework #8, Quizz on Matrice Addition, Midterm ...</p>
+                        <input id="subpart-input" type="text" class="validate" name="subpart">
+                        <label for="subpart-input">Name the new subpart</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="waves-effect waves-green btn-flat">Comment</button>
+                        <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                    </div>
+                </form>
+            </div>
+            <!--ADD SUBPART MODAL ENDS-->
 
         </div>
 

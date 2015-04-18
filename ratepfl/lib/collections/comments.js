@@ -7,6 +7,7 @@ Meteor.methods(
             Comments.insert(
                 {
                     courseID: courseID,
+                    userID: Meteor.userId(),
                     content: comment,
                     timestamp: new Date().getTime(),
                     upvotes: 0,

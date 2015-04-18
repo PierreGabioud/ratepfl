@@ -26,3 +26,7 @@ Meteor.publish("ratings", function(parentID){
 Meteor.publish('upvotesForUser', function(userID){
 	return Upvotes.find({userID: userID});
 });
+
+Meteor.publish('subpartForCourse', function(courseID){
+	return Subparts.find({courseID: courseID});
+});

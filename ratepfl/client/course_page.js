@@ -311,6 +311,14 @@ Template.coursePage.helpers({
 		var vote = Upvotes.find({userID: Meteor.userId(), commentID: this._id}).fetch()
 		return (vote.length > 0 && vote[0].type == -1)? "" : "text-lighten-4";
 	},
+
+	activeSubpart: function(){
+		return Session.get("selected-subpart") == this._id ? "active": "";
+	},
+	activeSubpartGeneral: function(){
+		var selected = Session.get("selected-subpart");
+		return (selected == undefined)? "active":"";
+	}
 });
 
 
@@ -390,6 +398,8 @@ Template.coursePage.events(
 
 			return false;
 		},
+
+
 		"click .upvote": function()
 		{
 			Meteor.call("upvote", Meteor.userId(), this._id)
@@ -397,6 +407,21 @@ Template.coursePage.events(
 		"click .downvote": function()
 		{
 			Meteor.call("downvote", Meteor.userId(), this._id)
+		},
+
+
+		"submit .new-subpart": function(event)
+		{
+			console.log("adding");
+			Meteor.call("addSubpart", this.course._id, event.target.subpart.value)
+		},
+		"click .subpart": function()
+		{
+			Session.set("selected-subpart", this._id);
+		},
+		"click .subpart-general": function()
+		{
+			Session.set("selected-subpart", undefined);
 		}
 
 });
