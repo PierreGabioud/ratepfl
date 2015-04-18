@@ -25,8 +25,13 @@ Router.route('/course/:_id', {
 	template: 'coursePage',
 	waitOn: function(){
 		Meteor.subscribe("singlecourse", this.params.id);
+		Meteor.subscribe("comments", this.params.id);
 	},
 	data: function(){
-		return Courses.findOne({});
+		return {
+		courses: Courses.findOne({}),
+		comments: Comments.find({_id:this.params.id})
+		}
 	}
 });
+
