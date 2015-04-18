@@ -12,26 +12,51 @@
         {{/with}}
 
         <br/><br/>
-            <div class="row">
-                {{#each comments}}
-                <div class="col s12 m6">
-                    <div class="card">
-                        <div class="card-content black-text">
-                            <span class=" black-text card-title">Comment</span>
-                            <p>{{content}}</p>
-                        </div>
-                        <div class="card-action right-align" style="padding: 10px;">
-                            <a href="#" class="green-text"><i class="mdi-content-add-circle"></i>{{upvotes}}</a>
-                            <a href='#' class="red-text"><i class="mdi-content-remove-circle"></i>{{downvotes}}</a>
-                        </div>
+
+        <div class="row">
+            {{#each comments}}
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content black-text">
+                        <span class=" black-text card-title">Comment</span>
+                        <p>{{content}}</p>
+                    </div>
+                    <div class="card-action right-align" style="padding: 10px;">
+                        <a href="#" class="green-text"><i class="mdi-content-add-circle"></i>{{upvotes}}</a>
+                        <a href='#' class="red-text"><i class="mdi-content-remove-circle"></i>{{downvotes}}</a>
                     </div>
                 </div>
-                {{/each}}
+            </div>
+            {{/each}}
+
+            <div class="fixed-action-btn" style="bottom: 45px; right: 45px;">
+                <a class="modal-trigger btn-floating btn-large waves-effect waves-light red" href="#modal-add-comment">
+                    <i class="large mdi-content-add"></i>
+                </a>
             </div>
 
+            <div id="modal-add-comment" class="modal">
+                <div class="modal-content">
+                    <h4>Comment on this course</h4>
+                    <textarea id="comment-textarea" class="materialize-textarea"></textarea>
+                    <label for="comment-textarea">Share what you think</label>
+                </div>
+                <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Add</a>
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+            </div>
+
+        </div>
 
     </div>
 
+    <script>
+        $(document).ready(function(){
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal-trigger').leanModal();
+        });
+    </script>
 
 
 

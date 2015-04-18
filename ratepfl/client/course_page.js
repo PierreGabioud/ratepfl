@@ -8,11 +8,8 @@ Template.coursePage.helpers({
 		return this.comments;
 	},
 	semesterName: function(){
-		console.log(this.semester)
 		return SEMESTER_NAMES[this.semester-1];
 	},
-
-
 	commentsNb : function(){
 		return Comments.find({courseID: this._id}).count()
 	}
