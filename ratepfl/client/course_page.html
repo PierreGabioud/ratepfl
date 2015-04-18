@@ -43,7 +43,7 @@
                 {{getTeacherComment}}
             </div>
             </div>
-            
+
              <div class="difficultyHeader rating-header">
 
                 <div class="col s3">Difficulty : </div>
@@ -99,9 +99,9 @@
             <div class="col s3">
                 <p class="center">Subparts</p>
                 <div class="collection">
-                    <a class="subpart-general collection-item {{activeSubpartGeneral}}">General<label class="secondary-content">12</label></a>
+                    <a class="subpart-general collection-item {{activeSubpartGeneral}}">General<label class="secondary-content">{{commentCountForGeneral}}</label></a>
                     {{#each subparts}}
-                        <a class="subpart collection-item {{activeSubpart}}">{{name}}<label class="secondary-content">12</label></a>
+                        <a class="subpart collection-item {{activeSubpart}}">{{name}}<label class="secondary-content">{{commentCountForPart}}</label></a>
                     {{/each}}
                     <a class="modal-trigger collection-item light text-lighten-3 add-subpart" href="#modal-add-subpart">Create subpart<i class="mdi-content-add secondary-content"></i></a>
                 </div>
@@ -140,6 +140,7 @@
             </div>
             <!--COMMENTS ENDS-->
 
+
             <!-- ADD COMMETN MODAL -->
             <div class="fixed-action-btn" style="bottom: 45px; right: 45px;">
                 <a class="modal-trigger btn-floating btn-large waves-effect waves-light red" href="#modal-add-comment">
@@ -161,6 +162,7 @@
                 </form>
             </div>
             <!-- ADD COMMENT MODAL ENDS-->
+
 
             <!--ADD SUBPART MODAL-->
             <div id="modal-add-subpart" class="modal">

@@ -1,5 +1,7 @@
 SEMESTER_NAMES = ['Autumn Semester', 'spring semester'];
 
+KEY_SUBPART = "selected_subpart";
+
 Template.coursePage.rendered = function () {
 	Session.set("sortMode", "new");
 };
@@ -11,17 +13,23 @@ Template.coursePage.helpers({
 	},
 	comments: function(){
 		if(Session.get("sortMode") == "best"){
-			return _.sortBy(this.comments.fetch(), function(o) {
+			return _.sortBy(Comments.find({subpartID: Session.get(KEY_SUBPART)}).fetch(), function(o) {
 				return o.downvotes - o.upvotes;
 			});
 		}
 		else{
-			return _.sortBy(this.comments.fetch(), function(o) {
+			return _.sortBy(Comments.find({subpartID: Session.get(KEY_SUBPART)}).fetch(), function(o) {
 				return -1 * o.timestamp;
 			});
 		}
 
 
+	},
+	commentCountForPart: function(){
+		return Comments.find({subpartID: this._id}).count();
+	},
+	commentCountForGeneral: function(){
+		return Comments.find({subpartID: undefined}).count();
 	},
 	getUnderline: function(sortMode){
 		if(sortMode == Session.get("sortMode")){
@@ -313,10 +321,10 @@ Template.coursePage.helpers({
 	},
 
 	activeSubpart: function(){
-		return Session.get("selected-subpart") == this._id ? "active": "";
+		return Session.get(KEY_SUBPART) == this._id ? "active": "";
 	},
 	activeSubpartGeneral: function(){
-		var selected = Session.get("selected-subpart");
+		var selected = Session.get(KEY_SUBPART);
 		return (selected == undefined)? "active":"";
 	}
 });
@@ -387,10 +395,10 @@ Template.coursePage.events(
 			event.preventDefault();
 			var courseID = this.course._id;
 			var comment = event.target.comment.value;
-			var timestamp = new Date().getTime();
+			var subpartID = Session.get(KEY_SUBPART);
 
 			// send add request to the server
-			Meteor.call("newComment", courseID, comment, timestamp);
+			Meteor.call("newComment", courseID, comment, subpartID);
 
 			// empty form
 			event.target.reset();
@@ -417,11 +425,11 @@ Template.coursePage.events(
 		},
 		"click .subpart": function()
 		{
-			Session.set("selected-subpart", this._id);
+			Session.set(KEY_SUBPART, this._id);
 		},
 		"click .subpart-general": function()
 		{
-			Session.set("selected-subpart", undefined);
+			Session.set(KEY_SUBPART, undefined);
 		}
 
 });
