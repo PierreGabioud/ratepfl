@@ -22,18 +22,22 @@
             <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             <ul class="right hide-on-med-and-down">
 
-                <li><a href=""><i class="mdi-action-search"></i></a></li>
-
-                <li><a href="/"><i class="mdi-action-view-module"></i></a></li>
-
-                <li><a href=""><i class="mdi-navigation-refresh"></i></a></li>
-
+                
                 <li><a class="dropdown-button" href="#!" data-activates="user-dropdown"><i class="mdi-social-person"></i></a></li>
             </ul>
 
 
             <ul class="side-nav" id="mobile-demo">
-                <li><a href="/">Home</a></li>
+               
+                {{#if user}}
+
+                <li><a href="#!" id="logout">Logout</a></li>
+
+                {{else}}
+
+                    <li><a href="/login">Login</a></li>
+
+                {{/if}}
                 
             </ul>
 
