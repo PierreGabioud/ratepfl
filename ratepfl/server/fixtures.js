@@ -24,6 +24,8 @@ if(Courses.find().count() == 0){
 	};
 }
 
+var courseID = Comments.findOne({})._id;
+
 
 //Comments.remove({});
 
@@ -31,7 +33,7 @@ if(Comments.find().count() == 0){
 	for (var i = 0; i <=50; i++) {
 		
 		Comments.insert({
-			courseID: "2Tu8o4FPqjo53LWE9",
+			courseID: courseID,
 			content: "Rien à branler de ce cours de merde",
 			upvotes: getRandomBetween(0,10),
 			downvotes: getRandomBetween(0,10),
