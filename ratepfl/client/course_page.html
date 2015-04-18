@@ -3,6 +3,7 @@
 
     <div class="container">
 
+
         {{#with course}}
         <h2>{{title}}</h2>
         <h3>{{teacher}}</h3>
@@ -10,6 +11,29 @@
             <br/>
         <label>Comments</label> <b>{{commentsNb}}</b> - <label>Overall Rating</label> <b>{{overallrating}}</b>
         {{/with}}
+
+
+        <div class="row">
+
+            <h4 class="center">Rate this course!</h4>
+            <br>
+            <h5>Number of hours/week : 
+                {{#each oneToTen}}
+                <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
+                {{/each}}
+            </h5>
+            <h5>Teacher : 
+                {{#each oneToTen}}
+                <i class="mdi-action-thumb-up teacherRating {{getTeacherRatingColor}}" data-teacherrating="{{this}}"></i>
+                {{/each}}
+            </h5>
+        </div>
+
+
+
+
+
+
 
         <br/><br/>
 
