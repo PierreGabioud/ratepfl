@@ -18,6 +18,7 @@ Template.courseStats.events({
     $(e.target).closest("li").removeClass(classColor);
   },
   'click .linkTabChart': function(e,t){
+    e.preventDefault();
     Session.set("chartType", $(e.target).data("type"));
   }
 });
