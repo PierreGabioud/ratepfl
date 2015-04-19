@@ -78,7 +78,22 @@ Router.route('/search', {
 			course: Courses.find({})
 		};
 	}
-})
+});
+
+//On before actions
+Router.onBeforeAction(function(){
+	if(!Meteor.userId()){
+		console.log("Not logged in, redirecting to inscription page");
+		this.render('login');
+	}
+	else{
+		console.log("User logged in, let's go for it");
+		this.next();
+		Router.go("/")
+	}
+},
+{ only: ['searchPage', 'coursePage', 'courseList', 'homePage'] });
+
 
 /*
 Router.route('/courses', {

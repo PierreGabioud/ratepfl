@@ -13,6 +13,8 @@ Template.navbar.helpers({
 Template.navbar.events({
     'click #logout': function () {
         Meteor.logout();
+        $(".dropdown-button").dropdown();
+
     },
     'click #search': function () {
         console.log("search switch")

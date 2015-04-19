@@ -100,13 +100,42 @@ if(Sections.find().count() == 0){
 	Sections.insert({
 		name: 'Computer Science'
 	});
-	for (var i = 0; i <=10; i++) {
-		Sections.insert({
-			name: 'Section ' + i
-		});
+	Sections.insert({
+		name: 'Mechanical Engineering'
+	});
+	Sections.insert({
+		name: 'Chemistry'
+	});
+	Sections.insert({
+		name: 'Material Sciences'
+	});
+	Sections.insert({
+		name: 'Mathematics'
+	});
+	Sections.insert({
+		name: 'Physics'
+	});
+	Sections.insert({
+		name: 'Mathematics'
+	});
+	Sections.insert({
+		name: 'Civil Engineering'
+	});
+	Sections.insert({
+		name: 'Architecture'
+	});
+	Sections.insert({
+		name: 'Environmental Engineering'
+	});
+	Sections.insert({
+		name: 'Electrical Engineering'
+	});
+	Sections.insert({
+		name: 'Microengineering'
+	});
+	
 
 
-	};
 }
 
 if(Meteor.users.findOne({_id: "CaiM7wLtSax3uMiA8"})){
@@ -128,6 +157,25 @@ if( !Ratings.findOne({userID: "CaiM7wLtSax3uMiA8"}) ){
 			});
 
 
+}
+
+if(!Ratings.findOne({userID : "abcdefg"})){
+
+	console.log("ADDING RATINGS");
+
+	for (var i = 0; i <= 56; i++) {
+
+		Ratings.insert({
+			userID: "abcdefg",
+			ratedID: "F4tzgTo2nWvoXegY8",
+				ratingHours:getRandomBetween(4,10),
+				ratingTeacher: getRandomBetween(1,9),
+				ratingDifficulty: getRandomBetween(5,10),
+				ratingInterest: getRandomBetween(5,10),
+				ratingUsefulness: getRandomBetween(2,10),
+		});
+		
+	};
 }
 
 }
