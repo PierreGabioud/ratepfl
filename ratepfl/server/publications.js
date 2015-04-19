@@ -30,3 +30,7 @@ Meteor.publish('upvotesForUser', function(userID){
 Meteor.publish('subpartForCourse', function(courseID){
 	return Subparts.find({courseID: courseID});
 });
+
+Meteor.publish('reports', function(){
+	return Reports.find({});
+});

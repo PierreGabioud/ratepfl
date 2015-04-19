@@ -18,6 +18,13 @@ Meteor.methods(
         },
         reportSubpart: function(subpartID)
         {
+            var lastReport = Reports.find({itemID: subpartID, userID: Meteor.userId()}).fetch()
+
+            if(lastReport.length > 0)
+                return;
+
+            Meteor.call("reportItem", Meteor.userId(), subpartID);
+
             Subparts.update({_id: subpartID}, { $inc: { reports: 1}});
 
             var curr = Subparts.find({_id: subpartID}).fetch();
@@ -27,8 +34,12 @@ Meteor.methods(
                 Subparts.remove({_id: subpartID});
                 Comments.remove({subpartID: subpartID});
 
+                Meteor.call("itemDeleted", subpartID);
+
+
                 // for client only, return to the general section
-                Session.set(KEY_SUBPART, undefined);
+                if (Meteor.isClient)
+                    Session.set(KEY_SUBPART, undefined);
             }
         }
     });
