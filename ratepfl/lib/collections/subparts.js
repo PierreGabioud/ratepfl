@@ -4,6 +4,9 @@ Meteor.methods(
     {
         addSubpart: function(courseID, name)
         {
+            if (name == undefined || name.length == 0)
+                return;
+
             Subparts.insert(
                 {
                     userID: Meteor.userId(),

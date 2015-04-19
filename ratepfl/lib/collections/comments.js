@@ -4,6 +4,9 @@ Meteor.methods(
     {
         newComment: function(courseID, comment, subpartID)
         {
+            if (comment == undefined || comment.length == 0)
+                return;
+
             Comments.insert(
                 {
                     courseID: courseID,
