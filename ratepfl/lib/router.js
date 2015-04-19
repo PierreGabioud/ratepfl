@@ -67,6 +67,19 @@ Router.route('/course/:_id', {
 	}
 });
 
+Router.route('/search', {
+	name:'searchPage',
+	template: 'searchPage',
+	waitOn: function(){
+		Meteor.subscribe("courses");
+	},
+	data: function(){
+		return {
+			course: Courses.find({})
+		};
+	}
+})
+
 /*
 Router.route('/courses', {
 	name:'courseList',

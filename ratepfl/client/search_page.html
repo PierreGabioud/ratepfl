@@ -1,0 +1,14 @@
+<template name="searchPage">
+
+    <div class="container">
+
+        <ul class="collection with-header">
+            <li class="collection-header"><h4>Results</h4></li>
+
+          {{#each results}}
+              <li class="collection-item"><div>{{title}}<a href="#!" class="secondary-content"><i class="mdi-content-send"></i></a></div></li>
+          {{/each}}
+        </ul>
+    </div>
+
+</template>

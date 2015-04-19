@@ -19,16 +19,31 @@
     <nav class="red darken-3">
         <div class="nav-wrapper container">
             <a href="/" class="brand-logo">RateEPFL</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+            <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             <ul class="right hide-on-med-and-down">
 
-                
+                {{#unless searching}}
+                <li><a href="" id="search"><i class="mdi-action-search"></i></a></li>
+                {{/unless}}
                 <li><a class="dropdown-button" href="#!" data-activates="user-dropdown"><i class="mdi-social-person"></i></a></li>
             </ul>
 
+            {{#if searching}}
+            <div class="right">
+                <form>
+                    <div class="input-field">
+                        <input autofocus="autofocus"  type="search" id="search-field" class="field" required>
+                        <label for="search-field"><i class="mdi-action-search"></i></label>
+                        <i id="search" class="mdi-navigation-close close"></i>
+                    </div>
+                </form>
+            </div>
+            {{/if}}
+
 
             <ul class="side-nav" id="mobile-demo">
-               
+
+
                 {{#if user}}
 
                 <li><a href="#!" id="logout">Logout</a></li>
