@@ -41,7 +41,8 @@ Router.route('/section/:section/:year', {
 			courses: Courses.find({
 				section: this.params.section,
 				year: parseInt(this.params.year)
-			}),
+			}, {$sort: {title:-1}}),
+
 			sections: Sections.find({})
 		}
 	}

@@ -1,5 +1,5 @@
 Meteor.publish('courses', function(){
-	return Courses.find({});
+	return Courses.find({}, {$sort: {title:1}});
 });
 
 Meteor.publish('singleCourse', function(id){
