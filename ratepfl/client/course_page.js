@@ -216,11 +216,14 @@ Template.coursePage.helpers({
 	},
 
 	activeSubpart: function(){
-		return Session.get(KEY_SUBPART) == this._id ? "active": "";
+		return Session.get(KEY_SUBPART) == this._id;
 	},
 	activeSubpartGeneral: function(){
 		var selected = Session.get(KEY_SUBPART);
-		return (selected == undefined)? "active":"";
+		return selected == undefined ? "active":"";
+	},
+	currentSubpart: function(){
+		return Subparts.findOne({supartID: Session.get(KEY_SUBPART)})
 	}
 });
 
@@ -319,8 +322,12 @@ Template.coursePage.events(
 
 		"submit .new-subpart": function(event)
 		{
-			console.log("adding");
+			event.preventDefault();
 			Meteor.call("addSubpart", this.course._id, event.target.subpart.value)
+
+			// empty form
+			event.target.reset();
+			$('#modal-add-subpart').closeModal();
 		},
 		"click .subpart": function()
 		{
@@ -329,6 +336,15 @@ Template.coursePage.events(
 		"click .subpart-general": function()
 		{
 			Session.set(KEY_SUBPART, undefined);
+		},
+		"click .report-subpart": function()
+		{
+			Meteor.call("reportSubpart", Session.get(KEY_SUBPART));
+		},
+		"click": function()
+		{
+			//TODO god forgive me for this horrible hack
+			setTimeout(function(){$('.modal-trigger').leanModal()}, 1000);
 		}
 
 });

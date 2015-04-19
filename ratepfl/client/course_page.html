@@ -103,7 +103,11 @@
                 <div class="collection">
                     <a class="subpart-general collection-item {{activeSubpartGeneral}}">General<label class="secondary-content">{{commentCountForGeneral}}</label></a>
                     {{#each subparts}}
-                        <a class="subpart collection-item {{activeSubpart}}">{{name}}<label class="secondary-content">{{commentCountForPart}}</label></a>
+                        {{#if activeSubpart}}
+                            <a class="modal-trigger subpart collection-item active" href="#modal-report-subpart">{{name}}<i class="report-section orange-text text-lighten-1 mdi-content-report secondary-content" title="report this section"></i></a>
+                        {{else}}
+                            <a class="subpart collection-item">{{name}}<label class="secondary-content">{{commentCountForPart}}</label></a>
+                        {{/if}}
                     {{/each}}
                     <a class="modal-trigger collection-item light text-lighten-3 add-subpart" href="#modal-add-subpart">Create subpart<i class="mdi-content-add secondary-content"></i></a>
                 </div>
@@ -166,6 +170,19 @@
             <!-- ADD COMMENT MODAL ENDS-->
 
 
+            <!--CONFIRM REPORT SUBPART MODAL-->
+            <div id="modal-report-subpart" class="modal">
+                <div class="modal-content">
+                    <h4>Are you sure you want to report the subpart <label class="light">{{currentSubpart.name}}</label></h4>
+                    <p>Only do that if you think this section is not supposed to appear here</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="" class="report-subpart modal-action modal-close waves-effect waves-green btn-flat">Confirm</a>
+                    <a href="" class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+                </div>
+            </div>
+            <!--CONFIRM REPORT SUBPART MODAL ENDS-->
+
             <!--ADD SUBPART MODAL-->
             <div id="modal-add-subpart" class="modal">
                 <form class="new-subpart">
@@ -176,7 +193,7 @@
                         <label for="subpart-input">Name the new subpart</label>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="waves-effect waves-green btn-flat">Comment</button>
+                        <button type="submit" class="waves-effect waves-green btn-flat">Add Subpart</button>
                         <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
                     </div>
                 </form>

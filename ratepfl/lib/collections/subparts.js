@@ -15,13 +15,17 @@ Meteor.methods(
         },
         reportSubpart: function(subpartID)
         {
-            var curr = Subparts.find({_id: subpartID}).fetch();
-
             Subparts.update({_id: subpartID}, { $inc: { reports: 1}});
+
+            var curr = Subparts.find({_id: subpartID}).fetch();
 
             if(curr.length > 0 && curr[0].reports >= 3)
             {
                 Subparts.remove({_id: subpartID});
+                Comments.remove({subpartID: subpartID});
+
+                // for client only, return to the general section
+                Session.set(KEY_SUBPART, undefined);
             }
         }
     });
