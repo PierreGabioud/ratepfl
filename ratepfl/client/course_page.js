@@ -180,7 +180,7 @@ Template.coursePage.helpers({
 			var val = Ratings.findOne({});
 			if(val) rating = val.ratingInterest;
 		}
-		var comments = ["SHS boring", "Good night", "Very boring", "Boring", "Not so interesting", "Alright", "Interesting", "Very interesting", "SUPER interesting", "∞ interesting"];
+		var comments = ["SHS boring", "Good night", "Very boring", "Boring", "Blurp", "Alright", "Interesting", "Very interesting", "SUPER interesting", "∞ interesting"];
 		if(rating){
 			return comments[rating-1];
 		}
