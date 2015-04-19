@@ -2,20 +2,36 @@ Template.courseHist.helpers({
 	histogram : function() {
 		console.log("Selected chart: "+Session.get("chartType"));
 
-		var ratings = _.pluck(Ratings.find({}).fetch(), Session.get("chartType"));
-        var counts = _.countBy(ratings)
+		var ratings = _.filter(_.pluck(Ratings.find({}).fetch(), Session.get("chartType") ),
+            function(el){
+                return el!=undefined;
+            }
+            );
 
+        var counts = _.countBy(ratings)
 
 		var coef = 1;
 		var offset=0;
 		if(Session.get("chartType") == "ratingHours"){
-			console.log(34);
-			coef = 2;
-			offset = -2;
-		}else{
-			coef = 1;
-			offset= 0;
-		}
+            coef = 2;
+            offset = -2;
+            ratings=_.map(ratings, function(val) {
+                return 2*val - 2;
+            });
+        }
+
+        console.log(ratings);
+        if (ratings.length > 1) {
+            var average = _.reduce(ratings, function(a,b){
+                return a+b;
+            }, 0) / ratings.length;
+        } else {
+            var average = ratings[0] || 0;
+        }
+
+
+
+
 		var vals = [];
 		var cats = [];
 
@@ -35,7 +51,7 @@ Template.courseHist.helpers({
                 plotShadow: false
             },
             title: {
-                text: "Histogram"
+                text: "Average: "+ average
             },
             tooltip: {
                 pointFormat: '<b>{point.percentage:.1f}%</b>'
