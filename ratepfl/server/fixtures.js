@@ -182,3 +182,6 @@ if(!Ratings.findOne({userID : "abcdefg"})){
 
 
 
+=======
+}
+>>>>>>> origin/master

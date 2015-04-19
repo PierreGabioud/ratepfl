@@ -1,4 +1,4 @@
-SEMESTER_NAMES = ['Autumn Semester', 'spring semester'];
+SEMESTER_NAMES = ['Autumn Semester', 'Spring Semester'];
 
 KEY_SUBPART = "selected_subpart";
 
