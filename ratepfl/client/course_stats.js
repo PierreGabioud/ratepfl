@@ -19,6 +19,7 @@ Template.courseStats.events({
   },
   'click .linkTabChart': function(e,t){
     e.preventDefault();
+    console.log("TYPE = "+$(e.target).data("type"));
     Session.set("chartType", $(e.target).data("type"));
   }
 });

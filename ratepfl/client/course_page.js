@@ -317,6 +317,7 @@ Template.coursePage.events(
 		},
 
 		"click .statsBtn": function() {
+			Session.set("chartType", "");
 			Session.set('displayStats', !Session.get('displayStats'));
 		},
 
