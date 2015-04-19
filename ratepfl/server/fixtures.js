@@ -46,6 +46,15 @@ function createCourse(title, courseID, section, credits, teacher, year, semester
 
 createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
 
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+createCourse("Big Data", "CS-422", "Computer Science", 7, "Christopher Koch", 4, 2);
+
 
 
 

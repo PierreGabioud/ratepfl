@@ -3,6 +3,8 @@ var getRandomBetween = function(min, max){
 }
 
 
+
+
 if(!Courses.findOne({title: "Real-time networks"})){
 
 
@@ -285,7 +287,7 @@ Courses.insert({
     title:"Statistical neurosciences",
     label:"COM-421",
     section:"Computer Science",
-    teacher:"null",
+    teacher:"Unknown",
     examen:"Ecrit",
     credits:4,
     year:4,
