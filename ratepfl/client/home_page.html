@@ -8,8 +8,19 @@
 		<div class="col m6">
             <h4>Feed</h4>
             <hr/>
+            Best comment : "<span class="light">{{bestComment.content}}</span>"
+            on {{bestComment.parentTitle}} with {{bestComment.upvotes}} upvotes
+						
+						<br>
+						Last comments: 
+						{{#each lastComments}}
+						{{content}}
+						<br>
+						{{/each}}
 
 		</div>
+
+
         <div class="col m6">
             <h4>Your Courses</h4>
             <hr/>
