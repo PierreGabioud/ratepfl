@@ -58,7 +58,8 @@ Template.courseHist.helpers({
                 plotShadow: false
             },
             title: {
-                text: "Average: "+ average.toFixed(2)+" over "+ratings.length+" vote(s)"
+                text: "Average: "+ average.toFixed(2)+" over "+ratings.length +
+                " vote" + ((ratings.length == 1)? '': 's')
             },
             tooltip: {
                 pointFormat: '<b></b>'
