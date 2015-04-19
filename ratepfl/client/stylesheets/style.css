@@ -2,6 +2,10 @@
 	cursor: default!important;
 }
 
+.whiteNice{
+  background-color: rgba(255,255,255,0.7);
+}
+
 body {
   background: url("/img/epfl.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
