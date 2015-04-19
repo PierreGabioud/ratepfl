@@ -85,7 +85,10 @@
         <!--RATES END-->
             <br/>
         {{#if displayStats}}
-        {{> courseStats}}
+            <div class="col s12" style="margin-top: 20px">
+                {{> courseStats}}
+            </div>
+
         {{/if}}
 
             <hr class="col s12"/>
@@ -114,7 +117,7 @@
             <!-- COMMENTS-->
             <div class="col s9 row">
                 <div class="center">
-                    <p><a href="#" class="best-button {{getUnderline 'best'}}">Best</a> | <a href="#" class="new-button {{getUnderline 'new'}}">New</a></p>
+                    <p>sort by <a href="#" class="best-button {{getUnderline 'best'}}">Best</a> | <a href="#" class="new-button {{getUnderline 'new'}}">New</a></p>
                 </div>
             {{#each comments}}
             <div class="col s12">
