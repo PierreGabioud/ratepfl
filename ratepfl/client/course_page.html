@@ -91,9 +91,9 @@
 
         {{/if}}
 
+            <h4 class="col s12 center light grey-text">Comments</h4>
             <hr class="col s12"/>
-            <h3 class="col s12 center light grey-text">Comments</h3>
-        <div class="row" style="margin-top: 20px">
+            <div class="row" style="margin-top: 10px">
 
 
             <!-- SUBPARTS -->
@@ -122,11 +122,17 @@
             {{#each comments}}
             <div class="col s12">
                 <div class="card">
+
+                    {{#if deletable}}
+                        <a href="" class="delete-comment red-text text-darken-3" style="  position: absolute; top: 10px;  right: 14px;" title="delete this comment"><i class="mdi-content-clear"></i></a>
+                    {{/if}}
+
                     <div class="card-content black-text">
                         <span class=" black-text card-title">{{content}}</span>
                     </div>
 
                     <div class="card-action row" style="padding: 10px; margin: 0">
+
 
                         <div class="col s4">
                             {{formatDate timestamp}}

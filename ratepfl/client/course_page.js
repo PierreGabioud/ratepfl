@@ -244,6 +244,9 @@ Template.coursePage.helpers({
 			return "red";
 		}
 	},
+	deletable: function() {
+		return Comments.find({userID: Meteor.userId(), _id: this._id}).count() > 0;
+	}
 
 });
 
@@ -372,6 +375,9 @@ Template.coursePage.events(
 		{
 			//TODO god forgive me for this horrible hack
 			setTimeout(function(){$('.modal-trigger').leanModal()}, 1000);
+		},
+		'click .delete-comment': function() {
+			Meteor.call("deleteComment", this._id);
 		}
 
 });

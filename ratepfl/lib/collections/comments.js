@@ -17,5 +17,10 @@ Meteor.methods(
                     upvotes: 0,
                     downvotes: 0
                 })
+        },
+        deleteComment: function(commentID)
+        {
+            if(Comments.find({userID: Meteor.userId(), _id: commentID}).count() > 0)
+                Comments.remove({_id: commentID});
         }
     })
