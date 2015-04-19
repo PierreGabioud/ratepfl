@@ -131,6 +131,3 @@ if( !Ratings.findOne({userID: "CaiM7wLtSax3uMiA8"}) ){
 }
 
 }
-
-
-

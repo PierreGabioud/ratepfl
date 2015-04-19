@@ -18,6 +18,7 @@ Template.navbar.events({
         console.log("search switch")
         var s = Session.get('searching') || false;
         Session.set('searching', !s);
+        Router.go('/')
     },
     'keyup #search-field': function (event) {
         var query = event.target.value;

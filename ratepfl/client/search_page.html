@@ -2,14 +2,19 @@
 
     <div class="container content-holder">
         <h3>Search</h3>
+        <h6 class="light">{{resultsNb}}</h6>
 
-        <ul class="collection with-header">
-            <li class="collection-header"><h4>Results</h4></li>
-
-          {{#each results}}
-              <li class="collection-item"><div>{{title}}<a href="#!" class="secondary-content"><i class="mdi-content-send"></i></a></div></li>
-          {{/each}}
-        </ul>
+        <div class="collection">
+            {{#each results}}
+                <a href="{{pathFor 'coursePage'}}" class="collection-item" >
+                <div>
+                    <label><b class="orange-text text-darken-4" style="font-size:1.25em">{{title}}</b> <br/>
+                    {{label}} - {{teacher}}</label>
+                    <label class="secondary-content light">{{semesterName}} - <b>{{credits}}</b> ECTS</label>
+                </div>
+                </a>
+            {{/each}}
+        </div>
     </div>
 
 </template>

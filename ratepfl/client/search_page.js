@@ -2,14 +2,24 @@ Template.searchPage.helpers({
     results: function () {
 
         var ret = _.filter(Courses.find({}).fetch(), function(elem){return match(Session.get('query'), elem.title)})
+        Session.set('result_lentgh', ret.length);
 
-        return ret
+        var toReturn = ret.splice(0, 10);
+        Session.set('result_lentgh_shown', toReturn.length);
+
+
+        return toReturn;
+    },
+    resultsNb: function() {
+        return "Showing " + Session.get('result_lentgh_shown') + " of " + Session.get('result_lentgh');
+    },
+    semesterName: function(){
+        return SEMESTER_NAMES[this.semester-1];
     },
 });
 
 var match  = function(search, text) {
 
-    console.log(search, text)
     search = search.toUpperCase();
     text = text.toUpperCase();
 
