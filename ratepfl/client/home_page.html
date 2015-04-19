@@ -12,8 +12,9 @@
 		</div>
         <div class="col m6">
             <h4>Your Courses</h4>
-           <div style="overflow: scroll; height:300px">
             <hr/>
+           <div style="overflow: scroll; height:400px">
+            
 
 			        <ul class="collection">
 								{{#each myCourses}}
@@ -26,7 +27,9 @@
 <div class="row">
 	<h4 class="center">All Courses</h4>
     <hr/>
-	<div class="col s4">
+
+	<div class="col s4 ">
+
 		<ul class="collapsible" data-collapsible="accordion">
 			{{#each getSections}}
 			<li>
@@ -42,9 +45,14 @@
 			</li>
 			{{/each}}
 		</ul>
+
+
 	</div>
-	<div class="col s8">
-		{{>courseList}}
+
+	<div class="col s8" >
+		<div style="overflow: scroll; height:540px">
+			{{>courseList}}
+		</div>
 	</div>
 </div>
 
