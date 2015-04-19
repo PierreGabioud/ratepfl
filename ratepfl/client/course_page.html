@@ -30,7 +30,7 @@
                 {{#each zeroToTen}}
                 <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
                 {{/each}}
-                {{getHoursComment}}
+                <i class="{{getIconClose}} cancelRating" data-type="ratingHours"></i>{{getHoursComment}}
                 </div>
             </div>
 
@@ -41,7 +41,7 @@
                 {{#each oneToTen}}
                 <i class="mdi-action-thumb-up teacherRating {{getTeacherRatingColor}}" data-teacherrating="{{this}}"></i>
                 {{/each}}
-                {{getTeacherComment}}
+                <i class="{{getIconClose}} cancelRating" data-type="ratingTeacher"></i>{{getTeacherComment}}
             </div>
             </div>
 
@@ -52,7 +52,7 @@
                 {{#each oneToTen}}
                 <i class="mdi-action-accessibility difficultyRating {{getDifficultyRatingColor}}" data-difficultyrating="{{this}}"></i>
                 {{/each}}
-                {{getDifficultyComment}}
+                <i class="{{getIconClose}} cancelRating" data-type="ratingDifficulty"></i>{{getDifficultyComment}}
             </div>
             </div>
 
@@ -65,7 +65,7 @@
                 {{#each oneToTen}}
                 <i class="mdi-action-favorite interestRating {{getInterestRatingColor}}" data-interestrating="{{this}}"></i>
                 {{/each}}
-                {{getInterestComment}}
+                <i class="{{getIconClose}} cancelRating" data-type="ratingInterest"></i>{{getInterestComment}}
             </div>
             </div>
 
@@ -76,7 +76,7 @@
                 {{#each oneToTen}}
                 <i class="mdi-action-verified-user usefulnessRating {{getUsefulnessRatingColor}}" data-usefulnessrating="{{this}}"></i>
                 {{/each}}
-                {{getUsefulnessComment}}
+                <i class="{{getIconClose}} cancelRating" data-type="ratingUsefulness"></i>{{getUsefulnessComment}}
             </div>
             </div>
 

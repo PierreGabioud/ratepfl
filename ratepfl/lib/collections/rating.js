@@ -27,6 +27,31 @@ Meteor.methods({
 				}
 
 		}
+	},
+	removeRating: function(ratedID, ratingType){
+			if(!Meteor.userId()){
+			console.log("Need to be connected");
+		}else{
+
+			console.log("Removing rating of this dude "+Meteor.userId()+"on this ratedID "+ratedID+" to new value = ");
+
+
+				if(ratingType=="ratingHours"){
+						Ratings.update({userID: Meteor.userId(), ratedID: ratedID}, {$set: {ratingHours: null}}, {upsert: true});
+				}else if(ratingType =="ratingTeacher"){
+						Ratings.update({userID: Meteor.userId(), ratedID: ratedID}, {$set: {ratingTeacher: null}}, {upsert: true});
+				}
+				else if(ratingType =="ratingDifficulty"){
+						Ratings.update({userID: Meteor.userId(), ratedID: ratedID}, {$set: {ratingDifficulty: null}}, {upsert: true});
+				}
+				else if(ratingType =="ratingInterest"){
+						Ratings.update({userID: Meteor.userId(), ratedID: ratedID}, {$set: {ratingInterest: null}}, {upsert: true});
+				}
+				else if(ratingType =="ratingUsefulness"){
+						Ratings.update({userID: Meteor.userId(), ratedID: ratedID}, {$set: {ratingUsefulness: null}}, {upsert: true});
+				}
+
+		}
 	}
 });
 

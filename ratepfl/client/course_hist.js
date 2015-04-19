@@ -34,7 +34,7 @@ Template.courseHist.helpers({
 
         var title = "";
         if(Session.get("chartType") == "ratingHours") title="Number of hours per week";
-        else if(Session.get("chartType") == "ratingTeacher") title="Teaching's quality";
+        else if(Session.get("chartType") == "ratingTeacher") title="Quality of the teaching";
         else if(Session.get("chartType") == "ratingDifficulty") title="Difficulty of the course";
         else if(Session.get("chartType") == "ratingInterest") title="Interest";
         else if(Session.get("chartType") == "ratingUsefulness") title="Usefulness";
@@ -58,10 +58,10 @@ Template.courseHist.helpers({
                 plotShadow: false
             },
             title: {
-                text: "Average: "+ average.toFixed(2)+" over "+ratings.length+" votes"
+                text: "Average: "+ average.toFixed(2)+" over "+ratings.length+" vote(s)"
             },
             tooltip: {
-                pointFormat: '<b>{point.percentage:.1f}%</b>'
+                pointFormat: '<b></b>'
             },
              xAxis: {
                 categories: cats,

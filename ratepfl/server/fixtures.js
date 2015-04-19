@@ -178,8 +178,6 @@ if(!Ratings.findOne({userID : "abcdefg"})){
 	};
 }
 
-}
-
 
 
 }

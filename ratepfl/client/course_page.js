@@ -137,6 +137,9 @@ Template.coursePage.helpers({
 			return comments[rating-1];
 		}
 	},
+	getIconClose: function(){
+		return 'mdi-navigation-close red-text';
+	},
 	getHoursComment: function(){
 		var rating=0;
 		if(Session.get("nbHoursRating")){
@@ -300,6 +303,11 @@ Template.coursePage.events({
 	},
 	'click .best-button': function(e,t){
 		Session.set("sortMode", "best");
+	},
+	'click .cancelRating':function(e,t){
+			var ratingType = $(e.target).data("type");
+			console.log("Ratingtype = "+ratingType);
+			Meteor.call("removeRating", t.data.course._id, ratingType);
 	}
 
 });

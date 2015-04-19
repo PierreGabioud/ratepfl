@@ -1,7 +1,7 @@
 Router.configure({
 	layoutTemplate: 'layout',
-	loadingTemplate: 'loading'
-	// notFoundTemplate: 'notFound'
+	loadingTemplate: 'loading',
+	notFoundTemplate: 'notFound'
 });
 
 
@@ -89,7 +89,7 @@ Router.onBeforeAction(function(){
 	else{
 		console.log("User logged in, let's go for it");
 		this.next();
-		Router.go("/")
+		//Router.go("/")
 	}
 },
 { only: ['searchPage', 'coursePage', 'courseList', 'homePage'] });
