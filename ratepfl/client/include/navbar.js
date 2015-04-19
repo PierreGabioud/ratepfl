@@ -19,8 +19,14 @@ Template.navbar.events({
     'click #search': function () {
         console.log("search switch")
         var s = Session.get('searching') || false;
+
         Session.set('searching', !s);
-        Router.go('/')
+
+        if(s)
+            Router.go(Session.get('prev_route'));
+    },
+    'focus #search-field': function (){
+        Session.set('prev_route', Router.current().url);
     },
     'keyup #search-field': function (event) {
         var query = event.target.value;
@@ -29,7 +35,10 @@ Template.navbar.events({
         if(query.length > 0)
             Router.go('/search')
         else
-            Router.go('/')
+        {
+            Router.go(Session.get('prev_route'));
+        }
+
     }
 });
 
