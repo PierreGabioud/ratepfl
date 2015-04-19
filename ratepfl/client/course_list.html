@@ -3,13 +3,19 @@
 
     {{#if getCourses}}
         <ul class="collection">
+
+
+        <div style="overflow-y: scroll; height:540px">
+
             {{#each getCourses}}
                 {{>courseLine}}
            {{/each}}
+       </div>
+
         </ul>
     {{else}}
         <div class="center" style="padding: 60px;">
-            <span class="letterpress">This selection dosen't show any course.</span><br/>
+            <span class="letterpress">This selection does not show any course.</span><br/>
             <span class="letterpress">Select another item from the left pane</span>
         </div>
     {{/if}}

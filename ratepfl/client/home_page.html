@@ -26,16 +26,19 @@
             <hr/>
 
 			{{#if myCourses.count}}
-                <div style="overflow-y: auto; height:400px">
+                
 
 
 			   <ul class="collection">
+			   	<div style="overflow-y: auto; height:400px">
 								{{#each myCourses}}
 									{{>courseLine}}
 								{{/each}}
-               </ul>
 
-			</div>
+					</div>
+            </ul>
+
+			
 			{{else}}
 				<div class="center" style="padding: 60px">
                     <span class="letterpress">You did not rate or comment any course yet!</span>
@@ -70,9 +73,8 @@
 	</div>
 
 	<div class="col s8" >
-		<div style="overflow-y: scroll; height:540px">
+		
 			{{>courseList}}
-		</div>
 	</div>
 </div>
 

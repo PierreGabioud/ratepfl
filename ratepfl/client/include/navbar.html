@@ -3,6 +3,7 @@
     <!--user dropdown-->
     <ul id="user-dropdown" class="dropdown-content">
         {{#with user}}
+
             <li><a href="">Welcome {{userName}}</a></li>
         {{/with}}
         {{#if user}}
@@ -21,7 +22,7 @@
             <a href="/" class="brand-logo" style="font-family: 'Pacifico', cursive;">RateEPFL</a>
             <a href="" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
             <ul class="right hide-on-med-and-down">
-
+                 <li><a href="/stats"><i class="mdi-editor-insert-chart"></i></a> </li>
                 {{#unless searching}}
                 <li><a href="" id="search"><i class="mdi-action-search"></i></a></li>
                 {{/unless}}
