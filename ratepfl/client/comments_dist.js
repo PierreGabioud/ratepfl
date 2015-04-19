@@ -3,7 +3,10 @@ Template.commentsDist.helpers({
 
     console.log('AAAAAA')
     //average for each course
-    var ratings = _.map(_.groupBy(_.filter(Comments.find({}).fetch(), function(o) {
+    //
+    console.log("COMMENTS"+this.comments.fetch());
+
+    var ratings = _.map(_.groupBy(_.filter(this.comments.fetch(), function(o) {
       return o.courseID!=undefined;
     }), 'courseID'), function(o){
       console.log(o);
@@ -42,41 +45,42 @@ Template.commentsDist.helpers({
       vals.push(counts[i.toString()] || 0);
     }
 
-    console.log(counts);
 
+    setTimeout(function(){
+      $('#commentsDist').highcharts({
+        chart: {
+          plotBackgroundColor: null,
+          plotBorderWidth: null,
+          plotShadow: false
+        },
+        title: {
+          text: "Average: "+ average.toFixed(2)+" over "+ratings.length +
+          " course" + ((ratings.length == 1)? '': 's')
+        },
+        tooltip: {
+          pointFormat: '<b></b>'
+        },
+        xAxis: {
+          categories: cats,
+          crosshair: true
+        },
 
-    $('#commentsDist').highcharts({
-      chart: {
-        plotBackgroundColor: null,
-        plotBorderWidth: null,
-        plotShadow: false
-      },
-      title: {
-        text: "Average: "+ average.toFixed(2)+" over "+ratings.length +
-        " course" + ((ratings.length == 1)? '': 's')
-      },
-      tooltip: {
-        pointFormat: '<b></b>'
-      },
-      xAxis: {
-        categories: cats,
-        crosshair: true
-      },
+        plotOptions: {
+          column: {
+                  groupPadding: 0,
+                  pointPadding: 0,
+                  borderWidth: 0
+          }
+        },
+        series: [{
+          type: 'column',
+          name: title,
+          data: vals
+        }]
 
-      plotOptions: {
-        column: {
-                groupPadding: 0,
-                pointPadding: 0,
-                borderWidth: 0
-        }
-      },
-      series: [{
-        type: 'column',
-        name: title,
-        data: vals
-      }]
+      });
 
-    }) ;
+    }, 500);
 
 
 
@@ -85,7 +89,6 @@ Template.commentsDist.helpers({
 
 function mean (vals) {
   return _.reduce(vals, function(a,b){
-    console.log(a+b);
       return a+b;
     }, 0) / vals.length;
 }
