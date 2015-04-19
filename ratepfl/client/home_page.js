@@ -1,6 +1,16 @@
 Template.homePage.helpers({
   getSections: function () {
     return this.sections;
+  },
+
+  connectedUser: function () {
+    return Meteor.user().emails[0].address;
+  },
+  nbRated: function() {
+    return Ratings.find({userID: Meteor.userId()}).count();
+  },
+  commentsNb: function() {
+    return Comments.find({userID: Meteor.userId()}).count();
   }
 });
 

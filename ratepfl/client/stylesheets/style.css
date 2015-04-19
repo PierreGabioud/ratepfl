@@ -54,3 +54,7 @@ body {
   .main {
     flex: 1 0 auto;
   }
+
+.nb-front {
+  font-size: 1.35em;
+}

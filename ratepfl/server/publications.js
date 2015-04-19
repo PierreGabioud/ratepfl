@@ -12,6 +12,9 @@ Meteor.publish('singleCourse', function(id){
 Meteor.publish('comments', function(courseID){
 	return Comments.find({courseID: courseID}, {sort: {upvote: 1}});
 });
+Meteor.publish('commentsForUser', function(userID){
+	return Comments.find({userID: userID});
+});
 
 Meteor.publish('sections', function(){
   return Sections.find({});
@@ -21,6 +24,10 @@ Meteor.publish("ratings", function(parentID){
 	console.log("Meteor user id = "+this.userId);
 
 	return Ratings.find({ratedID: parentID});
+});
+
+Meteor.publish("ratingsForUser", function(userID){
+	return Ratings.find({userID: userID})
 });
 
 Meteor.publish('upvotesForUser', function(userID){

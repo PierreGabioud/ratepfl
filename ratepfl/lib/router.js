@@ -12,6 +12,10 @@ Router.route('/', {
 	waitOn: function(){
 		Meteor.subscribe("courses");
 		Meteor.subscribe("sections");
+
+		Meteor.subscribe("commentsForUser", Meteor.userId());
+		Meteor.subscribe("ratingsForUser", Meteor.userId());
+		Meteor.subscribe("upvotesForUser", Meteor.userId());
 	},
 	data: function(){
 		return {
@@ -89,7 +93,7 @@ Router.onBeforeAction(function(){
 	else{
 		console.log("User logged in, let's go for it");
 		this.next();
-		//Router.go("/")
+
 	}
 },
 { only: ['searchPage', 'coursePage', 'courseList', 'homePage'] });
