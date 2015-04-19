@@ -2,15 +2,17 @@ Template.homePage.helpers({
   getSections: function () {
     return this.sections;
   },
-
   connectedUser: function () {
-    return Meteor.user().emails[0].address;
+    return Meteor.user() ? Meteor.user().emails[0].address : "Stranger";
   },
   nbRated: function() {
     return Ratings.find({userID: Meteor.userId()}).count();
   },
   commentsNb: function() {
     return Comments.find({userID: Meteor.userId()}).count();
+  },
+  upvotesNb: function() {
+    return Upvotes.find({userID: Meteor.userId(), type: 1}).count()
   }
 });
 
