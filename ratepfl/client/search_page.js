@@ -13,9 +13,6 @@ Template.searchPage.helpers({
     resultsNb: function() {
         return "Showing " + Session.get('result_lentgh_shown') + " of " + Session.get('result_lentgh');
     },
-    semesterName: function(){
-        return SEMESTER_NAMES[this.semester-1];
-    },
 });
 
 var match  = function(search, text) {

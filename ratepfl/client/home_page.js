@@ -13,6 +13,14 @@ Template.homePage.helpers({
   },
   upvotesNb: function() {
     return Upvotes.find({userID: Meteor.userId(), type: 1}).count()
+  },
+  myCourses: function() {
+    var rates = _.map(Ratings.find({userID: Meteor.userId()}).fetch(), function(e){return e.ratedID});
+    var courses = _.uniq(_.map(Comments.find({userID: Meteor.userId()}).fetch(), function(e){return e.courseID}).concat(rates));
+
+    console.log(courses);
+
+    return Courses.find({ '_id': {$in:courses}});
   }
 });
 
