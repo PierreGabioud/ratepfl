@@ -83,16 +83,18 @@
         </div>
 
         <div class="row">
-            <a class="waves-effect waves-light btn">Statistics</a>
-
+            <a class="waves-effect waves-light btn statsBtn">Statistics</a>
         </div>
+        {{#if displayStats}}
+        {{> courseStats}}
+        {{/if}}
 
 
         <br/><br/>
 
 
         <div class="row">
-            
+
             <hr/>
 
             <!-- SUBPARTS -->

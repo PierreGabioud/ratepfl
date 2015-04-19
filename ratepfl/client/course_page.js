@@ -4,6 +4,7 @@ KEY_SUBPART = "selected_subpart";
 
 Template.coursePage.rendered = function () {
 	Session.set("sortMode", "new");
+	Session.set('displayStats', false);
 };
 
 
@@ -201,7 +202,9 @@ Template.coursePage.helpers({
 		}	
 	},
 
-
+	displayStats: function(){
+		return Session.get('displayStats');
+	},
 
 	lightenUpvote: function(){
 		var vote = Upvotes.find({userID: Meteor.userId(), commentID: this._id}).fetch()
@@ -310,6 +313,9 @@ Template.coursePage.events(
 			Meteor.call("downvote", Meteor.userId(), this._id)
 		},
 
+		"click .statsBtn": function() {
+			Session.set('displayStats', !Session.get('displayStats'));
+		},
 
 		"submit .new-subpart": function(event)
 		{

@@ -20,12 +20,8 @@ Template.courseStats.events({
 });
 
 
-// Template.courseStats.rendered = function () {
-//   setTimeout(function() {
-//     $(document).ready(function(){
-//       $('.collapsible').collapsible({
-//         accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-//       });
-//     });
-//   }, 200);
-// }
+Template.courseStats.rendered = function () {
+  setTimeout(function() {
+   $('ul.tabs').tabs();
+  }, 200);
+}
