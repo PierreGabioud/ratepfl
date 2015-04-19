@@ -53,18 +53,21 @@ Template.homePage.helpers({
 
   myFeed: function () {
     var courseNlabel = _.object(_.map(Courses.find({}).fetch(), function(e){return [e._id, [e.label, e.title]]}));
+    var subpartNames = _.object(_.map(Subparts.find({}).fetch(), function(e){return [e._id, e.name]}));
+    console.log(subpartNames);
     //console.log(courseNlabel);
-    var myComments = _.object(_.map(Comments.find({userID: Meteor.userId()}).fetch(), function(e){return [e._id, [e.content, e.courseID]]}));
+    var myComments = _.object(_.map(Comments.find({userID: Meteor.userId()}).fetch(), function(e){return [e._id, [e.content, e.courseID, e.subpartID]]}));
     //console.log(myComments);
     var myCommentsIDs = _.keys(myComments);
     //console.log(myCommentsIDs);
     var upvotesToMe = _.map(_.sortBy(Upvotes.find({commentID: {$in: myCommentsIDs}, type: 1}).fetch(), function(e){return -e.timestamp}),function(e)
       {
         return {
-          msg: myComments[e.commentID][0],
+          msg: elipse(myComments[e.commentID][0]),
           timestamp: e.timestamp,
           label: courseNlabel[myComments[e.commentID][1]][0],
           title: courseNlabel[myComments[e.commentID][1]][1],
+          subpart: subpartNames[myComments[e.commentID][2]],
           _id: myComments[e.commentID][1]
         }
       });
@@ -104,4 +107,9 @@ Template.homePage.rendered = function () {
         accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     });
   }, 1000);
+}
+
+var ELIPSE_SIZE = 40;
+var elipse = function(s) {
+  return s.length < ELIPSE_SIZE-3 ? s: s.slice(0, ELIPSE_SIZE) + "..."
 }

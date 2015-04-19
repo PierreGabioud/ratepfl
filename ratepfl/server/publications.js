@@ -46,6 +46,10 @@ Meteor.publish('subpartForCourse', function(courseID){
 	return Subparts.find({courseID: courseID});
 });
 
+Meteor.publish('allSubparts', function(){
+	return Subparts.find({});
+});
+
 Meteor.publish('reports', function(){
 	return Reports.find({});
 });

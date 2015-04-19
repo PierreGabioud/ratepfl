@@ -19,7 +19,7 @@
                                 <div>
                                     <label>Your comment <b class="orange-text text-darken-4" style="font-size:1.25em">{{msg}}</b> has been upvoted <br/>
 										{{formatDate timestamp}}</label>
-									<label class="secondary-content light">{{title}} - <b>{{label}}</b></label>
+									<label class="secondary-content light">{{#if subpart}}{{subpart}} @ {{/if}}{{title}} - <b>{{label}}</b></label>
                                 </div>
                             </a>
 						{{/each}}
@@ -32,15 +32,6 @@
                     <span class="letterpress">Use the search box to find a course</span>
                 </div>
 			{{/if}}
-            <!--Best comment : "<span class="light">{{bestComment.content}}</span>"-->
-            <!--on {{bestComment.parentTitle}} with {{bestComment.upvotes}} upvotes-->
-						<!---->
-						<!--<br>-->
-						<!--Last comments: -->
-						<!--{{#each lastComments}}-->
-						<!--{{content}}-->
-						<!--<br>-->
-						<!--{{/each}}-->
 
 		</div>
 
