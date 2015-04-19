@@ -16,12 +16,18 @@ Template.courseStats.events({
   'mouseleave .sectionYear': function(e){
     var classColor = "green lighten-5";
     $(e.target).closest("li").removeClass(classColor);
+  },
+  'click .linkTabChart': function(e,t){
+    Session.set("chartType", $(e.target).data("type"));
   }
 });
 
 
 Template.courseStats.rendered = function () {
+  Session.set("chartType", "ratingHours");
   setTimeout(function() {
    $('ul.tabs').tabs();
   }, 200);
 }
+
+

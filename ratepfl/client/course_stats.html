@@ -11,18 +11,21 @@
  <div class="row">
    <div class="col s12">
      <ul class="tabs">
-       <li class="tab col s2"><a class="active" href="#stat1">Hours</a></li>
-       <li class="tab col s2"><a href="#stat2">Teacher</a></li>
-       <li class="tab col s2"><a href="#stat3">Difficulty</a></li>
-       <li class="tab col s2"><a href="#stat4">Interest</a></li>
-       <li class="tab col s2"><a href="#stat4">Usefulness</a></li>
+       <li class="tab col s2"><a  class="linkTabChart" data-type="ratingHours" href="#stat1">Hours</a></li>
+       <li class="tab col s2"><a class="linkTabChart" data-type="ratingTeacher" href="#stat2">Teacher</a></li>
+       <li class="tab col s2"><a class="linkTabChart" data-type="ratingDifficulty" href="#stat3">Difficulty</a></li>
+       <li class="tab col s2"><a class="linkTabChart" data-type="ratingInterest" href="#stat4">Interest</a></li>
+       <li class="tab col s2"><a class="linkTabChart" data-type="ratingUsefulness" href="#stat4">Usefulness</a></li>
      </ul>
    </div>
-   <div id="stat1" class="col s12">{{> courseHist type="hours"}}</div>
-   <div id="stat2" class="col s12">{{> courseHist type="hours"}}</div>
-   <div id="stat3" class="col s12">{{> courseHist type="hours"}}</div>
-   <div id="stat4" class="col s12">{{> courseHist type="hours"}}</div>
-   <div id="stat5" class="col s12">{{> courseHist type="hours"}}</div>
+
+   <div class="col s12">{{> courseHist}}</div>
+   <!-- 
+   <div id="stat1" class="col s12">{{> courseHist}}</div>
+   <div id="stat2" class="col s12">{{> courseHist}}</div>
+   <div id="stat3" class="col s12">{{> courseHist type="difficulty"}}</div>
+   <div id="stat4" class="col s12">{{> courseHist type="interest"}}</div>
+   <div id="stat5" class="col s12">{{> courseHist type="usefulness"}}</div> -->
 
  </div>
 
