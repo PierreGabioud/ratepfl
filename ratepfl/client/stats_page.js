@@ -1,0 +1,35 @@
+Template.statsPage.helpers({
+  getSections: function () {
+    console.log(this.comments.fetch());
+    return this.comments.fetch();
+  }
+});
+
+Template.statsPage.events({
+  'click .sectionYear': function (e) {
+    Router.go('/section/'+this.name+'/'+$(e.target).data('year'));
+  },
+  'mouseover .sectionYear': function(e){
+      var classColor = "green lighten-5";
+    $(e.target).closest("li").addClass(classColor);
+  },
+  'mouseleave .sectionYear': function(e){
+    var classColor = "green lighten-5";
+    $(e.target).closest("li").removeClass(classColor);
+  },
+  'click .linkTabChart': function(e,t){
+    e.preventDefault();
+    console.log("TYPE = "+$(e.target).data("type"));
+    Session.set("chartType", $(e.target).data("type"));
+  }
+});
+
+
+Template.statsPage.rendered = function () {
+  Session.set("chartType", "ratingHours");
+  setTimeout(function() {
+   $('ul.tabs').tabs();
+  }, 200);
+}
+
+

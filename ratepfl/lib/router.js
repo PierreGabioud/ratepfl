@@ -90,6 +90,21 @@ Router.route('/search', {
 	}
 });
 
+Router.route('/stats', {
+	name:'statsPage',
+	template: 'statsPage',
+	waitOn: function(){
+		Meteor.subscribe("allRatings");
+		Meteor.subscribe("allComments");
+	},
+	data: function(){
+		return {
+			ratings: Ratings.find({}),
+			comments: Comments.find({})
+		};
+	}
+});
+
 //On before actions
 Router.onBeforeAction(function(){
 	if(!Meteor.userId()){

@@ -26,6 +26,14 @@ Meteor.publish("ratings", function(parentID){
 	return Ratings.find({ratedID: parentID});
 });
 
+Meteor.publish("allRatings", function(){
+	return Ratings.find();
+});
+
+Meteor.publish('allComments', function(){
+	return Comments.find({});
+});
+
 Meteor.publish("ratingsForUser", function(userID){
 	return Ratings.find({userID: userID})
 });
