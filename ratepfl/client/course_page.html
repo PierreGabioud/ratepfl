@@ -13,8 +13,8 @@
         <h4 class=" light grey-text">{{label}} - {{semesterName}}</h4>
             <br/>
          <div class="">
-        <label>Comments</label> <b>{{commentsNb}}</b> - <label>Overall Rating</label> <b>{{overallrating}}</b>
-             <a class="waves-effect waves-light btn statsBtn" style="  margin-left: 20px;">Show Stats</a>
+        <label>Comments</label> <b>{{commentsNb}}</b>
+             <a class="waves-effect waves-light btn statsBtn {{getStatsBtnColor}}" data-isactive="false" style="margin-left: 20px;">{{getShowHide}} Stats</a>
         </div>
         {{/with}}
         </div>

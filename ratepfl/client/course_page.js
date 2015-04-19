@@ -5,6 +5,7 @@ KEY_SUBPART = "selected_subpart";
 Template.coursePage.rendered = function () {
 	Session.set("sortMode", "new");
 	Session.set('displayStats', false);
+	
 };
 
 
@@ -224,7 +225,22 @@ Template.coursePage.helpers({
 	},
 	currentSubpart: function(){
 		return Subparts.findOne({supartID: Session.get(KEY_SUBPART)})
-	}
+	},
+	getShowHide: function(){
+		if(!Session.get("displayStats")){
+			return "Show";
+		}else{
+			return "Hide";
+		}
+	},
+	getStatsBtnColor: function(){
+		if(!Session.get("displayStats")){
+			return "teal";
+		}else{
+			return "red";
+		}
+	},
+
 });
 
 
@@ -284,6 +300,7 @@ Template.coursePage.events({
 	'click .best-button': function(e,t){
 		Session.set("sortMode", "best");
 	}
+
 });
 
 
