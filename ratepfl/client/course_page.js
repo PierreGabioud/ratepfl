@@ -120,6 +120,8 @@ Template.coursePage.helpers({
 
 	getTeacherComment: function(){
 		var rating=0;
+		console.log("RATING TEACHER "+Session.get("teacherRating"));
+
 		if(Session.get("teacherRating")){
 			rating = Session.get("teacherRating");
 		}else{
@@ -127,26 +129,9 @@ Template.coursePage.helpers({
 			if(val) rating = val.ratingTeacher;
 		}
 
-
-		if(rating == 10){
-			return "BEST TEACHER EVAH";
-		}else if(rating > 8 ){
-			return "Fantastic!";
-
-		}
-		else if(rating > 7 ){
-			return "Awesome!";
-		}
-		else if(rating > 6 ){
-			return "Pretty awesome!";
-
-		}
-		else if(rating > 5){
-			return "Alright";
-		}else if(rating > 3){
-			return "Maah";
-		}else if(rating == 1){
-			return "STAHP";
+		var comments = ["...", ":|", "Meeh", "Beuhh", "Average", "Alright", "Good", "Very good!", "Awesome!", "BEST TEACHER EVAH"];
+		if(rating){
+			return comments[rating-1];
 		}
 	},
 	getHoursComment: function(){
@@ -177,9 +162,11 @@ Template.coursePage.helpers({
 			if(val) rating = val.ratingDifficulty;
 		}
 
-		var comments = ["lol", "VERY easy", "Very easy", "Easy", "Average", "Kinda hard", "Pretty hard", "Hard", "Very hard", "HARDOCRE"];
+		console.log("RAINTdd "+rating);
+
+		var comments = ["lol", "VERY easy", "Very easy", "Easy", "Average", "Kinda hard", "Pretty hard", "Hard", "Very hard", "HARDCORE"];
 		if(rating){
-			comments[rating-1];
+			return comments[rating-1];
 		}
 	},
 	getInterestComment: function(){
@@ -240,6 +227,7 @@ Template.coursePage.events({
 		Session.set("nbHoursRating", $(e.target).data("nbhoursrating"));
 	},
 	'mouseover .teacherRating': function(e){
+		console.log("YOYOYO");
 		Session.set("teacherRating", $(e.target).data("teacherrating"));
 	},
 	'mouseover .difficultyRating': function(e){
