@@ -1,3 +1,4 @@
+
 Router.configure({
 	layoutTemplate: 'layout',
 	loadingTemplate: 'loading',
@@ -19,7 +20,7 @@ Router.route('/', {
 	},
 	data: function(){
 		return {
-			courses: Courses.find({}),
+			courses: Courses.find({_id:"df"}),
 			sections: Sections.find({})
 		}
 	}
@@ -31,6 +32,11 @@ Router.route('/section/:section/:year', {
 	waitOn: function(){
 		Meteor.subscribe("courses");
 		Meteor.subscribe("sections");
+
+		Meteor.subscribe("commentsForUser", Meteor.userId());
+		Meteor.subscribe("ratingsForUser", Meteor.userId());
+		Meteor.subscribe("upvotesForUser", Meteor.userId());
+
 	},
 	data: function(){
 		return {
