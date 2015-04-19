@@ -48,7 +48,29 @@ Template.homePage.helpers({
           };
         }
     }
- 
+
+  },
+
+  myFeed: function () {
+    var courseNlabel = _.object(_.map(Courses.find({}).fetch(), function(e){return [e._id, [e.label, e.title]]}));
+    //console.log(courseNlabel);
+    var myComments = _.object(_.map(Comments.find({userID: Meteor.userId()}).fetch(), function(e){return [e._id, [e.content, e.courseID]]}));
+    //console.log(myComments);
+    var myCommentsIDs = _.keys(myComments);
+    //console.log(myCommentsIDs);
+    var upvotesToMe = _.map(_.sortBy(Upvotes.find({commentID: {$in: myCommentsIDs}, type: 1}).fetch(), function(e){return -e.timestamp}),function(e)
+      {
+        return {
+          msg: myComments[e.commentID][0],
+          timestamp: e.timestamp,
+          label: courseNlabel[myComments[e.commentID][1]][0],
+          title: courseNlabel[myComments[e.commentID][1]][1],
+          _id: myComments[e.commentID][1]
+        }
+      });
+    //console.log(upvotesToMe);
+
+    return upvotesToMe.splice(0, 14);
 
   },
 

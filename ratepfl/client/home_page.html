@@ -8,15 +8,39 @@
 		<div class="col m6">
             <h4>Feed</h4>
             <hr/>
-            Best comment : "<span class="light">{{bestComment.content}}</span>"
-            on {{bestComment.parentTitle}} with {{bestComment.upvotes}} upvotes
-						
-						<br>
-						Last comments: 
-						{{#each lastComments}}
-						{{content}}
-						<br>
+
+			{{#if myFeed}}
+                <div style="overflow-y: auto; height:400px">
+
+
+                    <ul class="collection">
+						{{#each myFeed}}
+                            <a href="{{pathFor 'coursePage'}}" class="collection-item" >
+                                <div>
+                                    <label>Your comment <b class="orange-text text-darken-4" style="font-size:1.25em">{{msg}}</b> has been upvoted <br/>
+										{{formatDate timestamp}}</label>
+									<label class="secondary-content light">{{title}} - <b>{{label}}</b></label>
+                                </div>
+                            </a>
 						{{/each}}
+                    </ul>
+
+                </div>
+			{{else}}
+                <div class="center" style="padding: 60px">
+                    <span class="letterpress">You did not rate or comment any course yet!</span>
+                    <span class="letterpress">Use the search box to find a course</span>
+                </div>
+			{{/if}}
+            <!--Best comment : "<span class="light">{{bestComment.content}}</span>"-->
+            <!--on {{bestComment.parentTitle}} with {{bestComment.upvotes}} upvotes-->
+						<!---->
+						<!--<br>-->
+						<!--Last comments: -->
+						<!--{{#each lastComments}}-->
+						<!--{{content}}-->
+						<!--<br>-->
+						<!--{{/each}}-->
 
 		</div>
 
@@ -29,14 +53,16 @@
                 
 
 
-			   <ul class="collection">
-			   	<div style="overflow-y: auto; height:400px">
-								{{#each myCourses}}
-									{{>courseLine}}
-								{{/each}}
+					<div style="overflow-y: auto; height:400px">
+						<ul class="collection">
 
-					</div>
-            </ul>
+							{{#each myCourses}}
+										{{>courseLine}}
+									{{/each}}
+
+				   </ul>
+						</div>
+
 
 			
 			{{else}}
@@ -78,28 +104,5 @@
 	</div>
 </div>
 
-<!--
-<table class="hoverable">
-	<thead>
-		<tr>
-			<th>Course title</th>
-			<th>Teacher</th>
-			<th>Credits</th>
-		</tr>
-	</thead>
-
-	<tbody>
-
-		{{#each courses}}
-		<tr>
-			<td>{{title}}</td>
-			<td>{{teacher}}</td>
-			<td>{{credits}}</td>
-		</tr>
-		{{/each}}
-
-	</tbody>
-</table>
--->
 </div>
 </template>
