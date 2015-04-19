@@ -116,10 +116,11 @@
 
             <!-- COMMENTS-->
             <div class="col s9 row">
-                <div class="center">
-                    <p>sort by <a href="#" class="best-button {{getUnderline 'best'}}">Best</a> | <a href="#" class="new-button {{getUnderline 'new'}}">New</a></p>
-                </div>
-            {{#each comments}}
+                {{#if comments}}
+                    {{#each comments}}
+                        <div class="center">
+                            <p>sort by <a href="#" class="best-button {{getUnderline 'best'}}">Best</a> | <a href="#" class="new-button {{getUnderline 'new'}}">New</a></p>
+                        </div>
             <div class="col s12">
                 <div class="card">
 
@@ -148,6 +149,12 @@
                 </div>
             </div>
             {{/each}}
+        {{else}}
+            <div class="center" style="padding: 60px;">
+                <span class="letterpress">There is no comment for this course/subpart yet!</span><br/>
+                <span class="letterpress">Hit the bottom left add button to create one.</span>
+            </div>
+        {{/if}}
             </div>
             <!--COMMENTS ENDS-->
 

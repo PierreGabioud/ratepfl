@@ -1,11 +1,18 @@
 <template name="courseList">
 
 
-<ul class="collection">
-	{{#each getCourses}}
-        {{>courseLine}}
-   {{/each}}
-</ul>
+    {{#if getCourses}}
+        <ul class="collection">
+            {{#each getCourses}}
+                {{>courseLine}}
+           {{/each}}
+        </ul>
+    {{else}}
+        <div class="center" style="padding: 60px;">
+            <span class="letterpress">This selection dosen't show any course.</span><br/>
+            <span class="letterpress">Select another item from the left pane</span>
+        </div>
+    {{/if}}
 
 
 

@@ -59,3 +59,10 @@ body {
   font-size: 1.35em;
   color:#e65100;
 }
+
+.letterpress {
+  color: #AAAAAA;
+  font-weight: bold;
+  text-shadow: 0px 1px 0px #FFFFFF;
+  margin: 60px;
+}
