@@ -67,7 +67,7 @@ Template.coursePage.helpers({
 		if(Session.get("nbHoursRating")){
 			return (Number(this) <= Session.get("nbHoursRating")) ? "red-text text-darken-3" : "black-text";
 		}else{
-			var value = Ratings.findOne({});
+			var value = Ratings.getRating(Meteor.userId());
 			if(value){
 					return ( Number(this) <= value.ratingHours) ? "red-text text-darken-3" : "black-text";
 			}
@@ -75,7 +75,7 @@ Template.coursePage.helpers({
 	},
 	getTeacherRatingColor: function(){
 			if(!Session.get("teacherRating")){
-					var value = Ratings.findOne({});
+					var value = Ratings.getRating(Meteor.userId());
 					if(value){
 						return (Number(this) <= value.ratingTeacher ) ? "green-text text-darken-3" : "black-text";
 					}
@@ -86,7 +86,7 @@ Template.coursePage.helpers({
 	getDifficultyRatingColor: function(){
 
 		if(!Session.get("difficultyRating")){
-			var value = Ratings.findOne({});
+			var value = Ratings.getRating(Meteor.userId());
 			if(value){
 						return (Number(this) <= value.ratingDifficulty ) ? "orange-text text-darken-3" : "black-text";
 			}
@@ -97,7 +97,7 @@ Template.coursePage.helpers({
 		getInterestRatingColor: function(){
 
 		if(!Session.get("interestRating")){
-			var value = Ratings.findOne({});
+			var value = Ratings.getRating(Meteor.userId());
 			if(value){
 						return (Number(this) <= value.ratingInterest ) ? "pink-text text-darken-3" : "black-text";
 			}
@@ -108,7 +108,7 @@ Template.coursePage.helpers({
 		getUsefulnessRatingColor: function(){
 
 		if(!Session.get("usefulnessRating")){
-			var value = Ratings.findOne({});
+			var value = Ratings.getRating(Meteor.userId());
 			if(value){
 						return (Number(this) <= value.ratingUsefulness ) ? "blue-text text-darken-3" : "black-text";
 			}
@@ -127,7 +127,7 @@ Template.coursePage.helpers({
 		if(Session.get("teacherRating")){
 			rating = Session.get("teacherRating");
 		}else{
-			var val = Ratings.findOne({});
+			var val = Ratings.getRating(Meteor.userId);
 			if(val) rating = val.ratingTeacher;
 		}
 
@@ -141,7 +141,7 @@ Template.coursePage.helpers({
 		if(Session.get("nbHoursRating")){
 			rating = Session.get("nbHoursRating");
 		}else{
-			var val = Ratings.findOne({});
+			var val = Ratings.getRating(Meteor.userId());
 			if(val) rating = val.ratingHours;
 		}
 
@@ -152,7 +152,7 @@ Template.coursePage.helpers({
 			if(rating){
 				return comments[rating-1];
 			}
-			
+
 
 	},
 	getDifficultyComment: function(){
@@ -184,7 +184,7 @@ Template.coursePage.helpers({
 		if(rating){
 			return comments[rating-1];
 		}
-	
+
 	},
 	getUsefulnessComment: function(){
 		var rating=0;
@@ -200,7 +200,7 @@ Template.coursePage.helpers({
 		var comments = ["Überuseless", "Useless", "Pretty useless", "sort of useless", "Neutral", "Kinda useleful", "Useful", "Very useful", "VERY useful", "Überuseful"];
 		if(rating){
 			return comments[rating-1];
-		}	
+		}
 	},
 
 	displayStats: function(){
@@ -368,6 +368,7 @@ Template.coursePage.events(
 });
 
 Template.coursePage.rendered = function () {
+	console.log(Ratings.find({}).fetch());
   setTimeout(function() {
   	console.log("DONE");
   	//$('.modal-trigger').leanModal();

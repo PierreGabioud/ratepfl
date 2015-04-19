@@ -10,7 +10,7 @@ Meteor.methods({
 
 			console.log("Updating rating of this dude "+Meteor.userId()+"on this ratedID "+ratedID+" to new value = "+newRating);
 
-			
+
 				if(type=="hours"){
 						Ratings.update({userID: Meteor.userId(), ratedID: ratedID}, {$set: {ratingHours: newRating}}, {upsert: true});
 				}else if(type =="teacher"){
@@ -25,8 +25,12 @@ Meteor.methods({
 				else if(type =="usefulness"){
 						Ratings.update({userID: Meteor.userId(), ratedID: ratedID}, {$set: {ratingUsefulness: newRating}}, {upsert: true});
 				}
-			
+
 		}
 	}
-
 });
+
+
+Ratings.getRating = function(userID) {
+		return Ratings.findOne({userID: userID});
+	}

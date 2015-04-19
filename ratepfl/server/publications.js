@@ -20,7 +20,7 @@ Meteor.publish('sections', function(){
 Meteor.publish("ratings", function(parentID){
 	console.log("Meteor user id = "+this.userId);
 
-	return Ratings.find({ratedID: parentID, userID: this.userId});
+	return Ratings.find({ratedID: parentID});
 });
 
 Meteor.publish('upvotesForUser', function(userID){
