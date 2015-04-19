@@ -12,7 +12,8 @@ Template.homePage.helpers({
     return Comments.find({userID: Meteor.userId()}).count();
   },
   upvotesNb: function() {
-    return Upvotes.find({userID: Meteor.userId(), type: 1}).count()
+    var myComments = _.map(Comments.find({userID: Meteor.userId()}).fetch(), function(e){return e._id});
+    return Upvotes.find({commentID: {$in: myComments}, type: 1}).count()
   },
   myCourses: function() {
     var rates = _.map(Ratings.find({userID: Meteor.userId()}).fetch(), function(e){return e.ratedID});
