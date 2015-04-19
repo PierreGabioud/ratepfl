@@ -16,7 +16,7 @@ Router.route('/', {
 
 		Meteor.subscribe("commentsForUser", Meteor.userId());
 		Meteor.subscribe("ratingsForUser", Meteor.userId());
-		Meteor.subscribe("upvotesForUser", Meteor.userId());
+		Meteor.subscribe("allupvotes");
 		Meteor.subscribe("allSubparts");
 	},
 	data: function(){
@@ -36,7 +36,7 @@ Router.route('/section/:section/:year', {
 
 		Meteor.subscribe("commentsForUser", Meteor.userId());
 		Meteor.subscribe("ratingsForUser", Meteor.userId());
-		Meteor.subscribe("upvotesForUser", Meteor.userId());
+		Meteor.subscribe("allupvotes");
 		Meteor.subscribe("allSubparts");
 
 	},

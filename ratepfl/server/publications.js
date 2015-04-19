@@ -50,6 +50,10 @@ Meteor.publish('allSubparts', function(){
 	return Subparts.find({});
 });
 
+Meteor.publish('allupvotes', function(){
+	return Upvotes.find({});
+});
+
 Meteor.publish('reports', function(){
 	return Reports.find({});
 });
