@@ -1,42 +1,40 @@
 <template name="statsPage">
 
-<!--
-<ul class="collection">
-  {{#each getCourses}}
-    <li class="collection-item courseRow">{{title}} by {{teacher}}</li>
-   {{/each}}
-</ul>
+    <!--
+    <ul class="collection">
+      {{#each getCourses}}
+        <li class="collection-item courseRow">{{title}} by {{teacher}}</li>
+       {{/each}}
+    </ul>
 
- -->
- <div class="container content-holder row">
-  <p class="center">Course average grade</p>
-   <div class="col s12">
-     <ul class="tabs">
-       <li class="tab col s2"><a href="#" class="linkTabChart" data-type="ratingHours" >Hours</a></li>
-       <li class="tab col s2"><a href="#"  class="linkTabChart" data-type="ratingTeacher" >Teacher</a></li>
-       <li class="tab col s2"><a href="#"  class="linkTabChart" data-type="ratingDifficulty" >Difficulty</a></li>
-       <li class="tab col s2"><a href="#" class="linkTabChart" data-type="ratingInterest">Interest</a></li>
-       <li class="tab col s2"><a href="#" class="linkTabChart" data-type="ratingUsefulness" >Usefulness</a></li>
-     </ul>
-  </div>
+     -->
+    <div class="container content-holder row">
+        <p class="center">Course average grade</p>
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s2"><a href="#" class="linkTabChart" data-type="ratingHours" >Hours</a></li>
+                <li class="tab col s2"><a href="#"  class="linkTabChart" data-type="ratingTeacher" >Teacher</a></li>
+                <li class="tab col s2"><a href="#"  class="linkTabChart" data-type="ratingDifficulty" >Difficulty</a></li>
+                <li class="tab col s2"><a href="#" class="linkTabChart" data-type="ratingInterest">Interest</a></li>
+                <li class="tab col s2"><a href="#" class="linkTabChart" data-type="ratingUsefulness" >Usefulness</a></li>
+            </ul>
+        </div>
 
-  <div class="col s12">{{> courseDist}}</div>
 
-  <div class="row">
-    <br>
-    
-   <p class="center" >Number of comments:</p>
-  
-  <div class="col s12">{{> commentsDist}}</div>
-  </div>
-   <!--
-   <div id="stat1" class="col s12">{{> courseHist}}</div>
-   <div id="stat2" class="col s12">{{> courseHist}}</div>
-   <div id="stat3" class="col s12">{{> courseHist type="difficulty"}}</div>
-   <div id="stat4" class="col s12">{{> courseHist type="interest"}}</div>
-   <div id="stat5" class="col s12">{{> courseHist type="usefulness"}}</div> -->
+        <br>
+        <div class="col s12">{{> courseDist}}</div>
+        <br>
 
- </div>
+        <p class="center" >Number of comments:</p>
 
+        <div class="col s12">{{> commentsDist}}</div>
+
+    </div>
+    <!--
+       <div id="stat1" class="col s12">{{> courseHist}}</div>
+       <div id="stat2" class="col s12">{{> courseHist}}</div>
+       <div id="stat3" class="col s12">{{> courseHist type="difficulty"}}</div>
+       <div id="stat4" class="col s12">{{> courseHist type="interest"}}</div>
+       <div id="stat5" class="col s12">{{> courseHist type="usefulness"}}</div> -->
 </template>
 
