@@ -127,7 +127,8 @@ Template.coursePage.helpers({
 		if(Session.get("teacherRating")){
 			rating = Session.get("teacherRating");
 		}else{
-			var val = Ratings.getRating(Meteor.userId);
+			var val = Ratings.getRating(Meteor.userId());
+			console.log("rating : "+val);
 			if(val) rating = val.ratingTeacher;
 		}
 
