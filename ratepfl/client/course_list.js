@@ -1,7 +1,7 @@
 Template.courseList.helpers({
 	getCourses: function () {
 		return _.sortBy(this.courses.fetch(), function(el){
-			return el.title;
+				return el.title;
 		});
 	}
 });
