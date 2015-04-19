@@ -1,30 +1,31 @@
 <template name="coursePage" xmlns="http://www.w3.org/1999/html">
 
 
-    <div class="container content-holder">
+    <div class="container content-holder row">
 
         {{#if course}}
 
+        <div class="col s8">
         {{#with course}}
         <br>
-        <h2 class="center">{{title}} <label class="light grey-text" style="font-size: 0.75em;">{{teacher}}</label></h2>
-        <h3 class="center"></h3>
-        <h4 class="center light grey-text">{{label}} - {{semesterName}}</h4>
+        <h2 class="">{{title}} <label class="light grey-text" style="font-size: 0.75em;">{{teacher}}</label></h2>
+        <h3 class=""></h3>
+        <h4 class=" light grey-text">{{label}} - {{semesterName}}</h4>
             <br/>
-         <div class="center">
+         <div class="">
         <label>Comments</label> <b>{{commentsNb}}</b> - <label>Overall Rating</label> <b>{{overallrating}}</b>
+             <a class="waves-effect waves-light btn statsBtn" style="  margin-left: 20px;">Show Stats</a>
         </div>
         {{/with}}
+        </div>
 
 
-        <div class="row">
+        <!--RATE-->
+        <div class="col s4">
+            <br/><br/>
+            <div class="nbHoursHeader rating-header row">
 
-            <h4 class="center">Rate this course!</h4>
-            <br>
-
-            <div class="nbHoursHeader rating-header">
-
-                <div class="col s3">Hours per week</div>
+                <div class="col s3">Hours/week</div>
                 <div class="col s9">
                 {{#each zeroToTen}}
                 <i class="mdi-av-timer nbhoursrating {{getNbHoursColor}}" data-nbhoursrating="{{this}}"></i>
@@ -33,7 +34,7 @@
                 </div>
             </div>
 
-            <div class="teacherHeader rating-header">
+            <div class="teacherHeader rating-header row">
 
                 <div class="col s3">Teacher</div>
                 <div class="col s9">
@@ -44,7 +45,7 @@
             </div>
             </div>
 
-             <div class="difficultyHeader rating-header">
+             <div class="difficultyHeader rating-header row">
 
                 <div class="col s3">Difficulty</div>
                 <div class="col s9">
@@ -57,7 +58,7 @@
 
 
 
-             <div class="interestHeader rating-header">
+             <div class="interestHeader rating-header row">
 
                 <div class="col s3">Interest</div>
                 <div class="col s9">
@@ -68,7 +69,7 @@
             </div>
             </div>
 
-             <div class="usefulnessHeader rating-header">
+             <div class="usefulnessHeader rating-header row">
 
                 <div class="col s3">Usefulness</div>
                 <div class="col s9">
@@ -81,21 +82,16 @@
 
 
         </div>
-
-        <div class="row">
-            <a class="waves-effect waves-light btn statsBtn">Statistics</a>
-        </div>
+        <!--RATES END-->
+            <br/>
         {{#if displayStats}}
         {{> courseStats}}
         {{/if}}
 
-
-        <br/><br/>
-
-
-        <div class="row">
-
             <hr/>
+            <h3 class="center light grey-text">Comments</h3>
+        <div class="row" style="margin-top: 20px">
+
 
             <!-- SUBPARTS -->
             <div class="col s3">
@@ -104,7 +100,7 @@
                     <a class="subpart-general collection-item {{activeSubpartGeneral}}">General<label class="secondary-content">{{commentCountForGeneral}}</label></a>
                     {{#each subparts}}
                         {{#if activeSubpart}}
-                            <a class="modal-trigger subpart collection-item active" href="#modal-report-subpart">{{name}}<i class="report-section orange-text text-lighten-1 mdi-content-report secondary-content" title="report this section"></i></a>
+                            <a class="subpart collection-item active">{{name}}<a class="modal-trigger" href="#modal-report-subpart"><i class="report-section orange-text text-lighten-1 mdi-content-report secondary-content" title="report this section"></i></a></a>
                         {{else}}
                             <a class="subpart collection-item">{{name}}<label class="secondary-content">{{commentCountForPart}}</label></a>
                         {{/if}}
