@@ -21,7 +21,44 @@ Template.homePage.helpers({
     console.log(courses);
 
     return Courses.find({ '_id': {$in:courses}});
+  },
+
+  bestComment: function(){
+    var comments = Comments.find({userID: Meteor.userId()}).fetch();
+    var bestComment = _.max(comments, function(el){
+      console.log("upvotes = "+el.upvotes);
+      return el.upvotes
+    });
+
+
+
+    if(bestComment){
+      console.log("ParentID = "+bestComment.courseID);
+
+        var parentTitle = Courses.findOne({_id: bestComment.courseID});
+
+
+
+        if(parentTitle){
+          console.log("COmment content = "+bestComment.content);
+          return {
+            content: bestComment.content,
+            parentTitle: parentTitle.title,
+            upvotes: bestComment.upvotes
+          };
+        }
+    }
+ 
+
+  },
+
+  lastComments: function(){
+      var comments = Comments.find({userID: Meteor.userId()}, {limit: 3});
+      console.log("NUMBER OF COMMENTS : "+comments);
+      return comments;
   }
+
+
 });
 
 Template.homePage.events({
